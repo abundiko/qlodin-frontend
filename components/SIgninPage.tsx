@@ -112,7 +112,7 @@ return (
 	</div>
 	<div className="px-8 py-4 bg-opacity-50 flex justify-center">
         <p className="text-sm text-gray-400">
-		Don't have an account?{" "}
+		Dont have an account?{" "}
 		<Link href="/sign-up" className="text-black hover:underline">
             Sign up
 		</Link>
