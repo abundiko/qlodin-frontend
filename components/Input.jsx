@@ -18,4 +18,3 @@ const Input = ({ icon: Icon, ...props }) => {
 };
 
 export default Input;
-01
