@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/PasswordStrengthMeter.jsx", "components/Input.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/PasswordStrengthMeter.jsx", "components/Input.jsx", "components/SIgninPage.jsx", "components/SignUpPage.jsx"],
   "exclude": ["node_modules"]
 }
