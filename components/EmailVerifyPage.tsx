@@ -69,7 +69,7 @@ const EmailVerificationPage = () => {
       );
   
       toast.success("Email verified successfully");
-      router.push("/profile-set");
+      router.push("/sign-in");
     } catch (error: any) {
       console.error("Verification Error:", error.response?.data); // Debug the error
       toast.error(error.response?.data?.message || "Failed to verify email");

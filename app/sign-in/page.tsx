@@ -1,12 +1,14 @@
 "use client";
 
 
-import SigninPage from "@/components/SIgninPage";
+// import SigninPage from "@/components/SIgninPage";
+import LoginForm from "@/components/LoginForm"
 
 const page = () => {
   return (
     <div className="bg-[url('/bg.png')]  min-h-screen  flex items-center justify-center relative overflow-hidden ">
-      <SigninPage />
+      {/* <SigninPage /> */}
+      <LoginForm/>
     </div>
   );
 };
