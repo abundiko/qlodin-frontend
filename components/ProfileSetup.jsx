@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import Input from "./Input";
-import { User, Cake } from "lucide-react";
+import { User, Cake ,Loader} from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-toastify";
-import Loader from "./Loader";
+import toast from "react-hot-toast";
+
+
 
 const ProfileSetup = () => {
   const router = useRouter();
@@ -50,7 +51,7 @@ const ProfileSetup = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-md w-full bg-white bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
+      className="max-w-md w-full sm:bg-white bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
     >
       <div className="p-8">
         <div className="flex flex-col items-center mt-10 justify-center">
@@ -83,6 +84,7 @@ const ProfileSetup = () => {
           <Input
             icon={Cake}
             name="dateOfBirth"
+            type="date"
             placeholder="DD/MM/YYYY"
             value={formData.dateOfBirth}
             onChange={handleChange}
@@ -126,7 +128,7 @@ const ProfileSetup = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "Sign Up"}
+            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "Contiue"}
           </motion.button>
         </form>
 
