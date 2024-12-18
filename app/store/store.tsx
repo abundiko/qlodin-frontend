@@ -38,9 +38,15 @@ const store = configureStore({
                     PERSIST,
                     PURGE,
                     REGISTER]
+                    
             },
+          
         })
 })
+
+
+
+
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

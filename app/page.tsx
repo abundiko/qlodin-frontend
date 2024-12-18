@@ -1,6 +1,5 @@
 "use client"
-import { useSelector } from "react-redux";
-import { RootState } from "./store/store";
+
 import React from "react";
 import Link from "next/link";
 
@@ -8,8 +7,6 @@ import Link from "next/link";
 
 
 export default function Home() {
-  const user = useSelector((state:RootState)=>state.auth)
-  console.log('Redux User',user)
   
 
   return (

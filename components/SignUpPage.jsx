@@ -9,7 +9,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { setEmail,  } from "@/app/store/authSlice";
+import { setEmail } from "@/app/store/authSlice"; // Import Redux actions
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -35,15 +35,22 @@ const SignUpPage = () => {
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
-
-      const { email,  } = response.data;
-
+  
+       // Use formData.email directly
+       const email = formData.email;
+  
+      // Log the email
+      // console.log("User Email:", formData.email);
+  
+       // Save email to cookies
+       document.cookie = `email=${email}; path=/; max-age=${7 * 24 * 60 * 60};`; // Expires in 7 days
+       console.log("Cookies:", document.cookie)
+  
       // Save email to Redux
       dispatch(setEmail(email));
-   
-
+  
       toast.success("Signup Successful! Please check your email for the verification code.");
-      router.push("/verify-email"); // Redirect to verification page
+      router.push("/verify-email");
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed.");
       console.error("Signup Error:", error);
@@ -51,6 +58,12 @@ const SignUpPage = () => {
       setLoading(false);
     }
   };
+
+
+
+  
+  
+  
 
   return (
     <motion.div

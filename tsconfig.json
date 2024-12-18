@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/PasswordStrengthMeter.jsx", "components/Input.jsx", "components/SIgninPage.jsx", "components/SignUpPage.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/PasswordStrengthMeter.jsx", "components/Input.jsx", "components/SIgninPage.jsx", "components/SignUpPage.jsx", "components/FloatingShape.jsx", "components/EmailVerifyPage.tsx", "app/store/store.tsx"],
   "exclude": ["node_modules"]
 }
