@@ -6,7 +6,7 @@ import LoginForm from "@/components/LoginForm"
 
 const page = () => {
   return (
-    <div className="bg-[url('/bg.png')]  min-h-screen  flex items-center justify-center relative overflow-hidden ">
+    <div className="bg-[url('/bg.png')] bg-cover  min-h-screen  flex items-center justify-center relative overflow-hidden ">
       {/* <SigninPage /> */}
       <LoginForm/>
     </div>

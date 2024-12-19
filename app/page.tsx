@@ -10,7 +10,7 @@ export default function Home() {
   
 
   return (
-    <div className="bg-[url('/bg.png')] min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="bg-[url('/bg.png')] bg-cover min-h-screen flex items-center justify-center relative overflow-hidden">
     <div className="flex flex-col items-center mt-10 justify-center">
       <a
         href="#"

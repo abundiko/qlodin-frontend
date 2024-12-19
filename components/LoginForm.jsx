@@ -63,7 +63,7 @@ const LoginForm = () => {
           <a href="#" className="flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
             <img className="w-10 h-10 my-2" src="/qlodin-logo.png" alt="logo" />
           </a>
-          <h1 className="text-[#1E1E1E] text-[30px] font-medium font-playfair">Qlodin.</h1>
+          <h1 className="text-[#1E1E1E] text-[30px] font-medium font-serif ">Qlodin.</h1>
           <h1 className="text-xl text-center text-black text-[28px] font-semibold font-['Quicksand'] leading-7 tracking-tight md:text-2xl dark:text-white mb-2">
             Welcome Back
           </h1>
@@ -111,8 +111,45 @@ const LoginForm = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "Login in"}
+            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "Next"}
           </motion.button>
+
+          <div className="flex flex-col items-center justify-center text-black text-[22px] font-medium font-['Quicksand'] leading-7">
+            or
+		</div>
+
+          <div className="flex flex-col gap-3 my-3">
+            <div className="flex flex-col items-center justify-center rounded-sm p-2 bg-[#DDDBFF] text-black">
+			<button className="flex items-center">
+                <img
+				className="w-6 h-6 mr-2"
+				src="/facebook.png"
+				alt="Facebook logo"
+                />
+                Sign in with Facebook
+			</button>
+            </div>
+            <div className="flex flex-col items-center justify-center rounded-sm p-2 bg-[#DDDBFF] text-black">
+			<button className="flex items-center">
+                <img
+				className="w-6 h-6 mr-2"
+				src="/google.png"
+				alt="Google logo"
+                />
+                Sign in with Google
+			</button>
+            </div>
+            <div className="flex flex-col items-center justify-center rounded-sm p-2 bg-[#DDDBFF] text-black">
+			<button className="flex items-center">
+                <img
+				className="w-10 h-6 mr-2"
+				src="/apple.png"
+				alt="Apple logo"
+                />
+                Sign in with Apple
+			</button>
+            </div>
+		</div>
         </form>
       </div>
       <div className="px-8 py-4 bg-opacity-50 flex justify-center">
