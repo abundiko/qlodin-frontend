@@ -7,12 +7,15 @@ import { ChangeEvent, useRef, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { RootState } from "@/app/store/store";
 import { Loader } from "lucide-react";
+import { setAuthData } from "@/app/store/authSlice";
 
 const EmailVerificationPage = () => {
+
+  const dispatch = useDispatch();
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [loading, setLoading] = useState(false);
@@ -56,28 +59,45 @@ const EmailVerificationPage = () => {
   
     try {
       const otpValue = otp.join("");
-      console.log(otpValue)
-  
       if (!email) {
         throw new Error("Email is not available. Please sign up again.");
       }
   
-      await axios.post(
+      const response = await axios.post(
         "https://qlodin-backend.onrender.com/api/user/auth/verify-email",
         { email, otp: otpValue },
         { headers: { "Content-Type": "application/json" } }
       );
+
+      console.log("API Response:", response);
+
+
+      const { token, user } = response.data.data;
+
+      // Save to Redux
+      dispatch(
+        setAuthData({
+          token,
+          userId: user._id,
+          
+        })
+      );
+
+      // Optionally save to localStorage
+      localStorage.setItem("authToken", token);
+      localStorage.setItem("userId", user._id);
+
+    
   
       toast.success("Email verified successfully");
-      router.push("/sign-in");
+      router.push("/profile-set");
     } catch (error: any) {
-      console.error("Verification Error:", error.response?.data); // Debug the error
+      console.error("Verification Error:", error.response?.data);
       toast.error(error.response?.data?.message || "Failed to verify email");
     } finally {
       setLoading(false);
     }
   };
-  
   
   // Auto-submit when all fields are filled
   useEffect(() => {
@@ -85,6 +105,36 @@ const EmailVerificationPage = () => {
       handleSubmit(new Event("submit") as unknown as React.FormEvent<HTMLFormElement>);
     }
   }, [otp]);
+
+
+ 
+
+
+
+
+  
+  const handleResendCode = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+       setLoading(true);
+
+    try{
+  
+
+  
+      const response = await axios.post(
+        "https://qlodin-backend.onrender.com/api/user/auth/resend-otp",
+        
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      toast.success("Verification code resent successfully");
+    } catch (error: any) {
+      console.error("Resend OTP  Error:", error.response?.data);
+      toast.error(error.response?.data?.message || "Failed to Resend OTP ");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <motion.div
@@ -130,11 +180,16 @@ const EmailVerificationPage = () => {
         </div>
 
         <div className="px-8 py-4 bg-opacity-50 flex justify-center">
-          <p className="text-sm text-gray-400">
-            <Link href={"/sign-in"} className="text-black hover:underline">
-              Resend Code
-            </Link>
-          </p>
+        <p className="text-sm text-gray-400">
+    Didn’t receive the code?{" "}
+    <button
+      type="submit"
+      
+      className="text-black font-semibold hover:underline"
+    >
+      Resend Code
+    </button>
+  </p>
         </div>
 
         <motion.button
@@ -149,7 +204,7 @@ const EmailVerificationPage = () => {
             {loading ? (
               <Loader className=" text-white animate-spin mx-auto" size={24} />
             ) : (
-              "Sign Up"
+              "Verify email"
             )}
         </motion.button>
       </form>

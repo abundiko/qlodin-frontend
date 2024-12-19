@@ -43,8 +43,8 @@ const SignUpPage = () => {
       // console.log("User Email:", formData.email);
   
        // Save email to cookies
-       document.cookie = `email=${email}; path=/; max-age=${7 * 24 * 60 * 60};`; // Expires in 7 days
-       console.log("Cookies:", document.cookie)
+      //  document.cookie = `email=${email}; path=/; max-age=${7 * 24 * 60 * 60};`; // Expires in 7 days
+      //  console.log("Cookies:", document.cookie)
   
       // Save email to Redux
       dispatch(setEmail(email));

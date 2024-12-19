@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion";
 import Input from "./Input";
-import { User, Cake ,Loader} from "lucide-react";
-import { useState } from "react";
+import { User, Cake, Loader } from "lucide-react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
 
-
-
-const ProfileSetup = () => {
+const ProfileSetup: React.FC = () => {
+  const { token, userId } = useSelector((state: RootState) => state.auth);
   const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -21,25 +23,36 @@ const ProfileSetup = () => {
     mobileNumber: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    console.log("Token:", token);
+    console.log("User ID:", userId);
+  }, [token, userId]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setLoading(true);
+
     try {
       const response = await axios.post(
         "https://qlodin-backend.onrender.com/api/user/auth/profile-setup",
         formData,
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
-      toast.success("Successful!");
+      toast.success("Profile created successfully!");
       router.push("/setup");
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Signup failed.");
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || "Profile setup failed.");
       console.error("Error during submission:", error);
     } finally {
       setLoading(false);
@@ -105,7 +118,6 @@ const ProfileSetup = () => {
                 <option value="+234">+234 (NG)</option>
                 <option value="+1">+1 (US)</option>
                 <option value="+44">+44 (UK)</option>
-                {/* Add more options as needed */}
               </select>
               <input
                 type="text"
@@ -128,7 +140,7 @@ const ProfileSetup = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "Contiue"}
+            {loading ? <Loader className="text-white animate-spin mx-auto" size={24} /> : "continue"}
           </motion.button>
         </form>
 
