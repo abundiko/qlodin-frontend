@@ -14,26 +14,15 @@ const SigninForm = () => {
 
   return (
     <div className="p-8">
-      <div className="flex flex-col items-center mt-10 justify-center">
-        <a
-          href="#"
-          className="flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img className="w-10 h-10 my-2" src="/qlodin-logo.png" alt="logo" />
-        </a>
-        <h1 className="text-[#1E1E1E] text-[30px] font-medium font-playfair">
-          Qlodin.
-        </h1>
-        <h1 className="text-xl text-center text-black text-[28px] font-semibold font-['Quicksand'] leading-7 tracking-tight md:text-2xl dark:text-white">
-          welcome Back
-        </h1>
-      </div>
-
       <form className="p-3" action={action}>
         <div className="flex items-stretch mb-6 gap-4 flex-col">
-        <FormMessage res={state} />
+          <FormMessage res={state} />
           {fields.map((field, index) => (
-            <AppInput {...field} key={index} error={state?.fieldErrors?.[field.name]} />
+            <AppInput
+              {...field}
+              key={index}
+              error={state?.fieldErrors?.[field.name]}
+            />
           ))}
           <Link
             href="/forgot-password"
@@ -42,7 +31,7 @@ const SigninForm = () => {
             Forgot password?
           </Link>
         </div>
-        <FormButton loading={isPending} className="btn-form">
+        <FormButton loading={false} className="btn-form">
           Login
         </FormButton>
       </form>
