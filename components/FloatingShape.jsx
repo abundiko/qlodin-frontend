@@ -22,3 +22,4 @@ const FloatingShape = ({ color = "bg-gray-500", size = "w-16 h-16", top = "0%", 
 };
 
 export default FloatingShape;
+ 
