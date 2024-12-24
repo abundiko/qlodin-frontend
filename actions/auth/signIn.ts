@@ -33,8 +33,8 @@ export async function signInAction(
     const res = await req.json();
 
     if (res.status === 200) {
-    //   redirect(__paths.profile, RedirectType.replace);
-      return { success: "Loggin in..." };
+        redirect(__paths.profile, RedirectType.replace);
+    //   return { success: "Loggin in..." };
     } else
       return {
         error: res.message ?? "Something went wrong, please try again",

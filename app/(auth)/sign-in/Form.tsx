@@ -5,23 +5,12 @@ import {
   FormButton,
   FormMessage,
 } from "@/components/formComponents";
-import { __paths } from "@/utils";
 import { Lock, Mail } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect } from "react";
-import toast from "react-hot-toast";
+import { useActionState } from "react";
 
 const SigninForm = () => {
   const [state, action, isPending] = useActionState(signInAction, {});
-  const router = useRouter();
-
-  useEffect(() => {
-    if (state.success) {
-      router.push(__paths.profile);
-      toast.success("Login successful");
-    }
-  }, [state]);
 
   return (
     <div className="p-8">
@@ -42,13 +31,9 @@ const SigninForm = () => {
 
       <form className="p-3" action={action}>
         <div className="flex items-stretch mb-6 gap-4 flex-col">
-          <FormMessage res={state} />
+        <FormMessage res={state} />
           {fields.map((field, index) => (
-            <AppInput
-              {...field}
-              key={index}
-              error={state?.fieldErrors?.[field.name]}
-            />
+            <AppInput {...field} key={index} error={state?.fieldErrors?.[field.name]} />
           ))}
           <Link
             href="/forgot-password"
