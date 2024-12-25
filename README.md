@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Qlodin Frontend Web App
 
-## Getting Started
+## Folder Structure
 
-First, run the development server:
+- `app`: containes the routes and pages
+- - components related to just one page are in the same folder (route)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `components`: contains all the components that are used in the app
+- - no orphan components should be placed directly in the components folder, categoriize them in sub-folders
+- - all components should be re-exported in the index.tsx file of their category folder
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `actions`: contains all the server actions that are used in the app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `stores`: contains all the state management files that are used in the app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `utils`: contains all the utilities that are used in the app
 
-## Learn More
+- `functions`: contains all the functions that are used in the app
 
-To learn more about Next.js, take a look at the following resources:
+- `types`: contains all the types that are used in the app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `lib`: contains all the libraries that are used in the app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `public`: contains all the public files that are used in the app
 
-## Deploy on Vercel
+- `constants`: contains all the constants that are used in the app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Routing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Route Groups
+- `(auth)`: contains all the routes that are related to authentication
+- `(user)`: contains all the routes that are related to the user dashboard
+- `(admin)`: contains all the routes that are related to the admin dashboard
+- `(public)`: contains all the routes that are related to the public pages
+- `(protected)`: contains all the routes that are related to the protected pages (must be logged in to view but not the dashboard)

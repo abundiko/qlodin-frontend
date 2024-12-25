@@ -1,0 +1,21 @@
+import { __paths } from "@/utils";
+
+export type ActionResponse = {
+  fieldErrors?: {
+    [key: string]: string[] | undefined;
+  };
+  error?: string;
+  success?: string;
+  data?: any;
+};
+
+export type ApiResponse<T = any> = {
+  data: T;
+  message: string;
+  status: number;
+  error?: string;
+};
+
+export type AppPath = (typeof __paths)[keyof typeof __paths];
+
+export type ServiceResponse<T = any, E = any> = [T, null] | [null, E];
