@@ -3,11 +3,12 @@ import "./globals.css";
 import { Quicksand, Playfair } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { FirebaseWrapper } from "@/components/hoc";
+import { createMetadata } from "@/functions/metadata";
 
-export const metadata: Metadata = {
-  title: "qlodin",
-  description: "created by  qlodin's team",
-};
+export const metadata: Metadata = createMetadata({
+  title: "Qlodin : Fashion and Social media knit together",
+  description: "qlodin provides fashion and social networking services.",
+});
 
 // fonts initialization
 const quicksandFont = Quicksand({

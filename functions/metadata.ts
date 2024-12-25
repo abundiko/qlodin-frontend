@@ -21,7 +21,7 @@ export type MetadataProps = {
 export function createMetadata({
   title,
   description,
-  img = "/images/banner.jpg",
+  img = "/images/banner.png",
 }: MetadataProps): Metadata {
   const keywords = [
     "qlodin",
@@ -29,16 +29,16 @@ export function createMetadata({
     ...processString(description),
   ];
   const buildImg = (img: string) =>
-    img ? (img.startsWith("/") ? HOST + img : img) : "/images/banner.jpg";
+    img ? (img.startsWith("/") ? HOST + img : img) : "/images/banner.png";
 
   return {
     title,
     description,
     metadataBase: new URL(HOST),
     icons: [
-      buildImg("/images/favicon.ico"),
+      // buildImg("/images/favicon.ico"),
       buildImg("/images/favicon.png"),
-      buildImg("/images/icon.png"),
+      // buildImg("/images/icon.png"),
       { rel: "apple-touch-icon", url: buildImg("/images/favicon.png") },
     ],
     applicationName: "Qlodin",

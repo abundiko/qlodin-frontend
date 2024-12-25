@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added error page layout (test)"
+git commit -m "added global layout metadata"
 
 git push origin dev
