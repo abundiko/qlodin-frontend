@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "cleaned up package.json, refined some auth actions"
+git commit -m "added error page layout (test)"
 
 git push origin2 dev
