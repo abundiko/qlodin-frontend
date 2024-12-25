@@ -23,7 +23,9 @@ export function PhoneNumberWithCodeInput({
   );
 
   const [countriesWithCodes] = useState(() => {
-    return Array.from(new Set(countries.map((country) => country.dialCode))).sort();
+    return Array.from(
+      new Set(countries.map((country) => country.dialCode))
+    ).sort();
   });
 
   useEffect(() => {
@@ -48,7 +50,8 @@ export function PhoneNumberWithCodeInput({
             setPhone(e.target.value);
           }}
           placeholder="Mobile number"
-          className="w-full px-4 py-2 bg-gray-100 text-[14px] rounded-md focus:ring-2 focus:ring-black"
+          min={1}
+          className="w-full px-4 py-2 bg-dark-100 text-[14px] rounded-md focus:ring-2 focus:ring-black"
         />
       </div>
       {error && <p className="text-red-500 text-[10px]">{error}</p>}
