@@ -1,6 +1,6 @@
 git remote remove origin
 
-git remote add origin "https://github.com/abundiko/qlodin-frontend.git"
+git remote add origin "https://github.com/Qlodin-devteam/qlodin.git"
 
 git add .
 
