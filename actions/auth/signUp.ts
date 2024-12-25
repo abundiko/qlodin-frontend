@@ -1,9 +1,11 @@
 "use server";
 
+import { debugLog } from "@/functions/debug";
 import { formDataToObject } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
-import { __endpoints, __paths, __validators, ApiRequest } from "@/utils";
-import { redirect, RedirectType } from "next/navigation";
+import { __cookies, __endpoints, __paths, __validators, ApiRequest } from "@/utils";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
@@ -13,7 +15,7 @@ const schema = z.object({
 
 type FormType = z.infer<typeof schema>;
 
-export async function signInAction(
+export async function signUpAction(
   _: ActionResponse,
   formData: FormData
 ): Promise<ActionResponse> {
@@ -28,14 +30,21 @@ export async function signInAction(
     };
 
   const [res, error] = await ApiRequest.post<ApiResponse>(
-    __endpoints.user.auth.signIn,
+    __endpoints.user.auth.signUp,
     data
   );
   if (error || !res) return { error: "Connection failed" };
 
-  if (res.status === 200) redirect(__paths.user, RedirectType.replace);
-  else
+  debugLog(res);
+
+  if (res.status !== 200) {
+    const { set } = await cookies();
+    // set the user's email to the cookie (1 day)
+    set(__cookies.register_state, data.email, { maxAge: 60 * 60 * 24 });
+    redirect(__paths.signUpVerifyEmail);
+  } else
     return {
-      error: res.message ?? "Something went wrong, please try again",
+      error:
+        res.error ?? res.message ?? "Something went wrong, please try again",
     };
 }

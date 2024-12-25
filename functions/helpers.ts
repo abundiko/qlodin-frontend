@@ -137,3 +137,8 @@ export function addDaysToData(dateString: string, days: number): string {
   date.setDate(date.getDate() + days);
   return date.toISOString().split("T")[0];
 }
+
+export function getCookie(name: string) {
+  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+  return match ? match[2] : null; // Return the value of the cookie or null if not found
+}

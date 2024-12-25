@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export default function AppLogo({
   size = 40,
-  onClick,
+  onClick = undefined,
 }: {
   size?: number;
-  onClick?: () => void | AppPath;
+  onClick?: () => void | AppPath | null;
 }) {
   const logo = (
     <Image
@@ -18,7 +18,7 @@ export default function AppLogo({
         height: size,
         width: size,
       }}
-      src="/qlodin-logo.png"
+      src="/images/qlodin-logo.png"
       alt="Qlodin logo"
     />
   );
@@ -26,7 +26,11 @@ export default function AppLogo({
   return (
     <Link
       href={
-        typeof onClick === "string" ? onClick : !onClick ? "#" : __paths.index
+        typeof onClick === "string"
+          ? onClick
+          : onClick === null
+          ? "#"
+          : __paths.index
       }
       onClick={typeof onClick !== "string" ? onClick : undefined}
     >

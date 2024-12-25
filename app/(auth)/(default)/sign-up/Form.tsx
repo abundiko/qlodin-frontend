@@ -1,6 +1,6 @@
 "use client";
 
-import { signInAction } from "@/actions";
+import { signUpAction } from "@/actions";
 import {
   AppInput,
   AppInputProps,
@@ -8,13 +8,10 @@ import {
   FormMessage,
 } from "@/components/formComponents";
 import { Lock, Mail } from "lucide-react";
-import Link from "next/link";
 import { useActionState } from "react";
-import SocialAuth from "./SocialAuth";
-import { __paths } from "@/utils";
 
-const SigninForm = () => {
-  const [state, action] = useActionState(signInAction, {});
+const SignupForm = () => {
+  const [state, action] = useActionState(signUpAction, {});
 
   return (
     <>
@@ -28,24 +25,16 @@ const SigninForm = () => {
               error={state?.fieldErrors?.[field.name]}
             />
           ))}
-          <Link
-            href={__paths.forgotPassword}
-            className="text-sm text-black hover:underline"
-          >
-            Forgot password?
-          </Link>
         </div>
         <FormButton loading={false} className="btn-form">
-          Login
+          Next
         </FormButton>
       </form>
-     
-      <SocialAuth />
     </>
   );
 };
 
-export default SigninForm;
+export default SignupForm;
 
 const fields: AppInputProps[] = [
   {

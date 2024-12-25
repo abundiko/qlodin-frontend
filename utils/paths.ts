@@ -1,10 +1,14 @@
 export const __paths = {
-    index: "/",
-    
-    // auth
-    signIn: "/sign-in",
-    signUp: "/sign-up",
+  // public
+  index: "/",
 
-    // profile
-    profile: "/profile",
-} as const
+  // auth
+  signIn: "/sign-in",
+  signUp: "/sign-up",
+  signUpVerifyEmail: "/sign-up/verify",
+  signUpCompleteProfile: "/sign-up/complete-profile",
+  forgotPassword: "/forgot-password",
+
+  // profile
+  user: "/user",
+} as const;
