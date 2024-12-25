@@ -142,3 +142,7 @@ export function getCookie(name: string) {
   const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
   return match ? match[2] : null; // Return the value of the cookie or null if not found
 }
+
+export function sleep(seconds: number){
+  return new Promise((resolve) => setTimeout(resolve, seconds));
+}

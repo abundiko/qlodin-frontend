@@ -1,10 +1,16 @@
 import Link from "next/link";
 import LoginForm from "./Form";
 import { __paths } from "@/utils";
+import { AppPageProps } from "@/types";
+import { Suspense } from "react";
+import { NextPathListener } from "@/components/micro";
 
-const page = () => {
+const page = async ({}: AppPageProps) => {
   return (
     <>
+      <Suspense>
+        <NextPathListener />
+      </Suspense>
       <h2 className="text-xl text-center text-black font-semibold leading-7 tracking-tight md:text-2xl mb-4">
         Welcome Back
       </h2>

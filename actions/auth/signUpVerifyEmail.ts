@@ -28,8 +28,6 @@ export async function signUpVerifyEmailAction(
 ): Promise<ActionResponse> {
   const data = formDataToObject<FormType>(formData);
 
-  await new Promise((resolve) => setTimeout(resolve, 5000)); // simulate a delay
-
   // validate the input fields
   const tryParse = schema.safeParse(data);
   if (!tryParse.success)
@@ -48,8 +46,10 @@ export async function signUpVerifyEmailAction(
 
   if (res.status === 200) {
     const { token } = res.data;
-    const { set } = await cookies();
-    // set the user's token to the cookie (1 day)
+    const { set, delete:del } = await cookies();
+    // delete the email cookie saved during registration
+    del(__cookies.register_state);
+    // set the user's token to the cookie
     set(__cookies.user_token, token, { maxAge: USER_COOKIE_MAX_AGE });
     redirect(__paths.signUpCompleteProfile);
   } else

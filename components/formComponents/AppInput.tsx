@@ -45,7 +45,7 @@ export default memo(function AppInput({
   }, [value]);
 
   const [id] = useState(() => {
-    return title ?? Date.now().toString() + "-input";
+    return title ? + title+"-input" : undefined;
   });
 
   return (

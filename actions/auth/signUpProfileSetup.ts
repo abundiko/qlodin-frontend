@@ -8,9 +8,9 @@ import {
   __endpoints,
   __paths,
   __validators,
-  ApiRequest,
+  
 } from "@/utils";
-import { AuthRequest } from "@/utils/authRequest";
+import {AuthRequest} from "@/utils/authRequest"
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
@@ -48,7 +48,10 @@ export async function signUpProfileSetupAction(
   debugLog(res);
 
   if (res.status === 200) {
-    redirect(__paths.user, RedirectType.replace);
+    const { get, delete:del } = await cookies();
+    const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
+    del(__cookies.next_path);
+    redirect(nextPath, RedirectType.replace);
   } else
     return {
       error:

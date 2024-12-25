@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added firebase sdk and initialized google sign in"
+git commit -m "cleaned up package.json, refined some auth actions"
 
 git push origin preview
