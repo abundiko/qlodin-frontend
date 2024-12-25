@@ -51,7 +51,7 @@ export function PhoneNumberWithCodeInput({
           }}
           placeholder="Mobile number"
           min={1}
-          className="w-full px-4 py-2 bg-dark-100 text-[14px] rounded-md focus:ring-2 focus:ring-black"
+          className="app-input ps-3"
         />
       </div>
       {error && <p className="text-red-500 text-[10px]">{error}</p>}

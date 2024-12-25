@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Quicksand } from "next/font/google";
+import { Quicksand, Playfair } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
@@ -14,6 +14,12 @@ const quicksandFont = Quicksand({
   variable: "--font-quicksand",
 });
 
+const playfairFont = Playfair({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "300"],
+  variable: "--font-playfair",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${quicksandFont.variable} font-quicksand`}>
+      <body
+        className={`${quicksandFont.variable} ${playfairFont.variable} font-quicksand`}
+      >
         <main>
           {/* <ClientProvider> */}
 

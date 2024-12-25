@@ -11,6 +11,7 @@ export default {
     extend: {
       fontFamily: {
         quicksand: ["var(--font-quicksand)"],
+        playfair: ["var(--font-playfair)"],
       },
       colors: {
         light: {
