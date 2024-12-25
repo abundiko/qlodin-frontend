@@ -8,8 +8,11 @@ import {
   FormMessage,
   PhoneNumberWithCodeInput,
 } from "@/components/formComponents";
-import { Cake, User } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { LuCake, LuUser } from "react-icons/lu";
 import { useActionState, useState } from "react";
+import Link from "next/link";
+import { __paths } from "@/utils";
 
 const Form = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -23,10 +26,10 @@ const Form = () => {
 
   return (
     <>
-      <form className="p-3" action={action}>
-        <div className="flex items-stretch mb-6 gap-4 flex-col">
+      <form action={action} className="flex flex-col gap-4">
+        <div className="flex items-stretch mb-6 gap-3 flex-col">
           <FormMessage res={state} />
-          <div className="flex max-md:flex-col gap-4">
+          <div className="flex max-md:flex-col gap-3">
             {fields1.map((field, index) => (
               <AppInput
                 {...field}
@@ -50,6 +53,29 @@ const Form = () => {
         <FormButton loading={false} className="btn-form">
           Continue
         </FormButton>
+        <div className="flex gap-2 items-center justify-center">
+          <Checkbox required id="agree" />
+          <label htmlFor="agree" className="text-sm">
+            I have read and agree to the terms of service
+          </label>
+        </div>
+        <p className="text-center text-xs">
+          By clicking Continue, you agree to Qlodin's{" "}
+          <Link
+            href={__paths.termsOfService}
+            className="font-semibold hover:underline"
+          >
+            Terms of Service
+          </Link>
+          <br />
+          and confirm that you have read Qlodin's{" "}
+          <Link
+            href={__paths.privacyPolicy}
+            className="font-semibold hover:underline"
+          >
+            Privacy Policy
+          </Link>
+        </p>
       </form>
     </>
   );
@@ -61,12 +87,12 @@ const fields1: AppInputProps[] = [
   {
     placeholder: "First Name",
     name: "firstName",
-    icon: <User />,
+    icon: <LuUser />,
   },
   {
     placeholder: "Last Name",
     name: "lastName",
-    icon: <User />,
+    icon: <LuUser />,
   },
 ];
 
@@ -75,11 +101,11 @@ const fields2: AppInputProps[] = [
     type: "date",
     placeholder: "DD/MM/YYYY",
     name: "dateOfBirth",
-    icon: <Cake />,
+    icon: <LuCake />,
   },
   {
     placeholder: "Driptag",
     name: "userName",
-    icon: <User />,
+    icon: <LuUser />,
   },
 ];

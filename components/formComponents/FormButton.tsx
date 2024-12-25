@@ -6,18 +6,20 @@ import { FaSpinner } from "react-icons/fa6";
 
 export type FormButtonProps = HTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
+  disabled?: boolean;
 };
 
 export default function FormButton({
   className,
   children,
   loading = false,
+  disabled,
   ...props
 }: FormButtonProps) {
   const { pending } = useFormStatus();
 
   return (
-    <button {...props} disabled={loading || pending} className={className}>
+    <button {...props} disabled={loading || pending || disabled} className={className}>
       {
         // loading||pending ? <FaSpinner className="animate-spin" /> : <>{children}</>
         loading || pending ? (

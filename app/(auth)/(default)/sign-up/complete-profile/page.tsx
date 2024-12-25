@@ -4,9 +4,9 @@ import Form from "./Form";
 const page = () => {
   return (
     <>
-      <h1 className="text-xl text-center text-black text-[28px] font-semibold font-quicksand leading-7 tracking-tight md:text-2xl dark:text-white">
+      <h2 className="text-xl text-center text-black font-semibold leading-7 tracking-tight md:text-2xl mb-4">
       Creating your Profile
-      </h1>
+      </h2>
       <Form />
       
     </>

@@ -55,9 +55,9 @@ export default memo(function AppInput({
           {title}
         </label>
       )}
-      <div className="relative AppInput z-[1]">
+      <div className="relative z-[1]">
         <span
-          className={`absolute inline-block left-3 opacity-60 ${
+          className={`absolute text-sm inline-block left-3 opacity-60 ${
             textarea ? "top-4" : "top-1/2 -translate-y-1/2"
           }`}
         >
@@ -69,7 +69,7 @@ export default memo(function AppInput({
           type="button"
           role="button"
             onClick={() => setEyeOpen(!eyeOpen)}
-            className={`absolute inline-block right-3 ${textarea ? "top-4" : "top-1/2 -translate-y-1/2"
+            className={`absolute inline-block text-neutral-600 right-3 ${textarea ? "top-4" : "top-1/2 -translate-y-1/2"
               }`}
           >
             {

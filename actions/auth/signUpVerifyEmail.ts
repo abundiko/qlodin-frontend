@@ -28,6 +28,8 @@ export async function signUpVerifyEmailAction(
 ): Promise<ActionResponse> {
   const data = formDataToObject<FormType>(formData);
 
+  await new Promise((resolve) => setTimeout(resolve, 5000)); // simulate a delay
+
   // validate the input fields
   const tryParse = schema.safeParse(data);
   if (!tryParse.success)

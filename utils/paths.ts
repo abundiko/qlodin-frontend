@@ -2,6 +2,10 @@ export const __paths = {
   // public
   index: "/",
 
+  // legal
+  termsOfService: "/terms-of-service",
+  privacyPolicy: "/privacy-policy",
+
   // auth
   signIn: "/sign-in",
   signUp: "/sign-up",

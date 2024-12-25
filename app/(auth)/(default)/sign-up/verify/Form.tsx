@@ -20,7 +20,10 @@ const SignupForm = ({ email }: { email: string }) => {
   ); //rensend verification code after 15 secs
   const formRef = useRef<HTMLFormElement>(null);
   const pinputRef = useRef<HTMLInputElement[]>(null);
-  const [state, _action] = useActionState(signUpVerifyEmailAction, {});
+  const [state, _action, submitting] = useActionState(
+    signUpVerifyEmailAction,
+    {}
+  );
 
   useEffect(() => {
     if (!pinputRef.current) return;
@@ -43,8 +46,8 @@ const SignupForm = ({ email }: { email: string }) => {
 
   return (
     <>
-      <form ref={formRef} className="p-3" action={action}>
-        <div className="flex items-stretch mb-6 gap-4 flex-col">
+      <form ref={formRef} action={action} className="flex flex-col gap-4">
+        <div className="flex items-stretch my-6 gap-4 flex-col">
           <FormMessage res={state} />
           <div className="flex justify-center items-center gap-2">
             <PinField
@@ -52,9 +55,6 @@ const SignupForm = ({ email }: { email: string }) => {
               length={6}
               validate={/^[0-9]$/}
               className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-              onComplete={() => {
-                formRef.current?.requestSubmit();
-              }}
               onChange={setCode}
             />
           </div>
@@ -73,7 +73,11 @@ const SignupForm = ({ email }: { email: string }) => {
             <span>wait {formattedTime}</span>
           )}
         </p>
-        <FormButton loading={false} className="btn-form">
+        <FormButton
+          disabled={code.length < 6}
+          loading={false}
+          className="btn-form"
+        >
           Verify Email
         </FormButton>
       </form>

@@ -7,9 +7,9 @@ import Link from "next/link";
 const page = () => {
   return (
     <>
-      <h1 className="text-xl text-center text-black text-[28px] font-semibold font-quicksand leading-7 tracking-tight md:text-2xl dark:text-white">
+      <h2 className="text-xl text-center text-black font-semibold leading-7 tracking-tight md:text-2xl mb-4">
         Sign Up
-      </h1>
+      </h2>
       <SignupForm />
       <div className="px-8 py-4 bg-opacity-50 flex justify-center">
         <p className="text-sm text-gray-400">

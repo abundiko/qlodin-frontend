@@ -12,10 +12,10 @@ const page = async () => {
 
   return (
     <>
-      <h1 className="text-xl text-center text-black text-[28px] font-semibold font-quicksand leading-7 tracking-tight md:text-2xl dark:text-white">
+      <h2 className="text-xl text-center text-black font-semibold leading-7 tracking-tight md:text-2xl">
         Verify Your Email
-      </h1>
-      <p className="text-center text-black mb-6">
+      </h2>
+      <p className="text-center text-black mb-4">
         Enter the 6-digit code sent to &quot;{email}&quot;
       </p>
       <SignupVerifyEmailForm email={email} />

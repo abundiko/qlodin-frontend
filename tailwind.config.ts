@@ -13,6 +13,13 @@ export default {
         quicksand: ["var(--font-quicksand)"],
       },
       colors: {
+        light: {
+          100: "#F8F8F8",
+        },
+        dark: {
+          100: "#BCBCBC",
+          800: "#1E1E1E",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

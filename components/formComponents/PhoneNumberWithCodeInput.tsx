@@ -1,5 +1,6 @@
 import { countries } from "country-codes-flags-phone-codes";
 import { HTMLAttributes, useEffect, useState } from "react";
+import AppSelect from "./AppSelect";
 
 export type PhoneNumberWithCodeInputProps = HTMLAttributes<HTMLInputElement> & {
   onChangeText?: (value: string) => void;
@@ -21,6 +22,10 @@ export function PhoneNumberWithCodeInput({
     defaultValue ? `${defaultValue}`.replace(value, "") : ""
   );
 
+  const [countriesWithCodes] = useState(() => {
+    return Array.from(new Set(countries.map((country) => country.dialCode))).sort();
+  });
+
   useEffect(() => {
     onChangeText?.(`${value} ${phone}`);
   }, [value, onChangeText, phone]);
@@ -28,20 +33,12 @@ export function PhoneNumberWithCodeInput({
   return (
     <div>
       <div className="flex space-x-2">
-        <select
+        <AppSelect
           name="countryCode"
-          className="w-32 px-4 py-2 bg-gray-100 text-[14px] rounded-md focus:ring-2 focus:ring-black"
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
+          onChange={setValue}
           value={value}
-        >
-          {countries.map((country) => (
-            <option key={country.code} value={country.dialCode}>
-              {country.code} {country.dialCode}
-            </option>
-          ))}
-        </select>
+          options={countriesWithCodes}
+        />
         <input
           {...props}
           type="number"

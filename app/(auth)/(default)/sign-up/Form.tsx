@@ -7,7 +7,7 @@ import {
   FormButton,
   FormMessage,
 } from "@/components/formComponents";
-import { Lock, Mail } from "lucide-react";
+import { LuLock, LuMail } from "react-icons/lu";
 import { useActionState } from "react";
 
 const SignupForm = () => {
@@ -15,7 +15,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <form className="p-3" action={action}>
+      <form action={action}>
         <div className="flex items-stretch mb-6 gap-4 flex-col">
           <FormMessage res={state} />
           {fields.map((field, index) => (
@@ -41,12 +41,12 @@ const fields: AppInputProps[] = [
     type: "email",
     placeholder: "Email Address",
     name: "email",
-    icon: <Mail />,
+    icon: <LuMail />,
   },
   {
     type: "password",
     placeholder: "Password",
     name: "password",
-    icon: <Lock />,
+    icon: <LuLock />,
   },
 ];
