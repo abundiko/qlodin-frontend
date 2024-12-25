@@ -19,7 +19,7 @@
 
 - `types`: contains all the types that are used in the app
 
-- `lib`: contains all the libraries that are used in the app
+- `lib`: contains all the libraries that are used in the app (similar to utils but for external modules)
 
 - `public`: contains all the public files that are used in the app
 

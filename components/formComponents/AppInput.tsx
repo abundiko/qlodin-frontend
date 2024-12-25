@@ -18,13 +18,13 @@ export type AppInputProps = {
   rows?: number;
   error?: string[];
   onChange?: (value: string) => void;
-  inputProps?: HTMLAttributes<HTMLInputElement> & any
+  inputProps?: HTMLAttributes<HTMLInputElement> & any;
 };
 
 export default memo(function AppInput({
   icon,
   placeholder,
-  value = '',
+  value = "",
   name,
   type = "text",
   onChange,
@@ -40,16 +40,19 @@ export default memo(function AppInput({
   const [val, setVal] = useState(value);
   const [eyeOpen, setEyeOpen] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setVal(value);
-  }, [value])
+  }, [value]);
 
+  const [id] = useState(() => {
+    return title ?? Date.now().toString() + "-input";
+  });
 
   return (
-    <div className={hidden ? 'hidden' : '' + "font-switzer"}>
+    <div className={hidden ? "hidden" : ""}>
       {title && (
         <label
-          htmlFor={`${title}-input`}
+          htmlFor={id}
           className="inline-block pb-1 text-black-300 text-base"
         >
           {title}
@@ -63,27 +66,23 @@ export default memo(function AppInput({
         >
           {icon}
         </span>
-        {
-          type === 'password' &&
+        {type === "password" && (
           <button
-          type="button"
-          role="button"
+            type="button"
+            role="button"
             onClick={() => setEyeOpen(!eyeOpen)}
-            className={`absolute inline-block text-neutral-600 right-3 ${textarea ? "top-4" : "top-1/2 -translate-y-1/2"
-              }`}
+            className={`absolute inline-block text-neutral-600 right-3 ${
+              textarea ? "top-4" : "top-1/2 -translate-y-1/2"
+            }`}
           >
-            {
-              eyeOpen
-                ? <HiEye />
-                : <HiEyeOff />
-            }
+            {eyeOpen ? <HiEye /> : <HiEyeOff />}
           </button>
-        }
+        )}
         {textarea ? (
           <textarea
-          readOnly={readonly}
-          hidden={hidden}
-            id={`${title}-input`}
+            readOnly={readonly}
+            hidden={hidden}
+            id={id}
             name={name}
             placeholder={placeholder}
             rows={rows ?? 4}
@@ -93,25 +92,25 @@ export default memo(function AppInput({
               if (onChange) onChange(e.target.value);
             }}
             className={`app-input ${!icon ? "ps-3" : "ps-9"} ${
-              (fieldError) ? "!bg-red-100" : ""
+              fieldError ? "!bg-red-100" : ""
             }`}
           />
         ) : (
           <input
-          {...inputProps}
-          readOnly={readonly}
-          hidden={hidden}
-            id={`${title}-input`}
+            {...inputProps}
+            readOnly={readonly}
+            hidden={hidden}
+            id={id}
             name={name}
             placeholder={placeholder}
-            type={!eyeOpen ? type : 'text'}
+            type={!eyeOpen ? type : "text"}
             value={val}
             onChange={(e) => {
               setVal(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
             className={`app-input ${ps ? ps : !icon ? "ps-4" : "ps-9"}  ${
-              (fieldError) ? "!bg-red-100" : ""
+              fieldError ? "!bg-red-100" : ""
             }`}
           />
         )}

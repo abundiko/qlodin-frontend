@@ -1,4 +1,10 @@
+"use client";
+import { Loader } from "lucide-react";
+import { useGoogleAuth } from "@/hooks";
+
 export default function SocialAuth() {
+  const { loading: googleLoading, startAuth: authWithGoogle } = useGoogleAuth();
+
   return (
     <>
       <div className="flex flex-col items-center justify-center text-black text-sm md:text-lg md:font-semibold mt-3 leading-7">
@@ -13,7 +19,8 @@ export default function SocialAuth() {
         <SocialAuthButton
           title="Sign in with Google"
           icon="/images/icons/google.svg"
-          onClick={() => {}}
+          onClick={authWithGoogle}
+          loading={googleLoading}
         />
         <SocialAuthButton
           title="Sign in with Apple"
@@ -25,24 +32,26 @@ export default function SocialAuth() {
   );
 }
 
-
 function SocialAuthButton({
   icon,
   title,
   onClick,
+  loading = false,
 }: {
   icon?: string;
   title: string;
   onClick?: () => void;
+  loading?: boolean;
 }) {
   return (
-    <button onClick={onClick} className="btn-social-auth">
+    <button disabled={loading} onClick={onClick} className="btn-social-auth">
       <img
         className="w-5 aspect-square object-contain"
         src={icon}
         alt={`${title} logo`}
       />
       {title}
+      {loading && <Loader className="w-4 h-4 animate-spin" />}
     </button>
   );
 }

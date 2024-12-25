@@ -97,6 +97,6 @@ body {
   }
 
   .btn-social-auth {
-    @apply bg-[#DDDBFF] border border-[#DDDBFF] px-11 py-3 rounded-lg gap-3 font-semibold hover:bg-white btn;
+    @apply bg-[#DDDBFF] border border-[#DDDBFF] px-11 py-3 rounded-lg gap-3 font-semibold hover:bg-white disabled:pointer-events-none disabled:opacity-70 btn;
   }
 }
