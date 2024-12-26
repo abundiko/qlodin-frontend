@@ -23,7 +23,14 @@ const SignupForm = () => {
           <FormMessage res={state} />
           <AppInput
             {...fields[0]}
-            error={[emailError ?? ""] ?? state?.fieldErrors?.[fields[0].name]}
+            error={(() => {
+              const stateError = [emailError].filter(
+                (i) => typeof i === "string"
+              );
+              return stateError.length > 0
+                ? stateError
+                : state?.fieldErrors?.[fields[0].name];
+            })()}
             onChange={setEmail}
             value={email}
             rightComponent={<InputStatusCheckerIcon status={status} />}
@@ -33,10 +40,7 @@ const SignupForm = () => {
             error={state?.fieldErrors?.[fields[1].name]}
           />
         </div>
-        <FormButton
-          disabled={status !== "success"}
-          className="btn-form"
-        >
+        <FormButton disabled={status !== "success"} className="btn-form">
           Next
         </FormButton>
       </form>

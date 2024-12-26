@@ -47,9 +47,14 @@ const Form = () => {
           />
           <AppInput
             {...fields2[1]}
-            error={
-              [usernameError ?? ""] ?? state?.fieldErrors?.[fields2[1].name]
-            }
+            error={(() => {
+              const stateError = [usernameError].filter(
+                (i) => typeof i === "string"
+              );
+              return stateError.length > 0
+                ? stateError
+                : state?.fieldErrors?.[fields2[1].name];
+            })()}
             onChange={setUsername}
             value={username}
             rightComponent={<InputStatusCheckerIcon status={status} />}
