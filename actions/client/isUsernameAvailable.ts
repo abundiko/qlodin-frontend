@@ -1,14 +1,14 @@
-'use server'
+// 'use server'
 
 import { debugLog } from "@/functions/debug";
 import { ApiResponse } from "@/types";
 import { ApiRequest, __endpoints } from "@/utils";
 
-export async function isUsernameAvailable(username: string) {
+export async function isUsernameAvailable(userName: string) {
 
   const [req, err] = await ApiRequest.post<ApiResponse>(
     __endpoints.user.auth.usernameAvailabity,
-    { username }
+    { username: userName }
   );
 
   debugLog({req, err})
