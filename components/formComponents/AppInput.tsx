@@ -6,6 +6,7 @@ import { HiEye } from "react-icons/hi2";
 
 export type AppInputProps = {
   icon?: React.ReactNode;
+  rightComponent?: React.ReactNode;
   placeholder: string;
   value?: string;
   name: string;
@@ -34,18 +35,20 @@ export default memo(function AppInput({
   readonly,
   hidden,
   rows,
-  error: fieldError,
+  error,
   inputProps,
+  rightComponent,
 }: AppInputProps) {
   const [val, setVal] = useState(value);
   const [eyeOpen, setEyeOpen] = useState(false);
+  const fieldError = error?.filter((i) => !!i);
 
   useEffect(() => {
     setVal(value);
   }, [value]);
 
   const [id] = useState(() => {
-    return title ? + title+"-input" : undefined;
+    return title ? +title + "-input" : undefined;
   });
 
   return (
@@ -91,7 +94,7 @@ export default memo(function AppInput({
               setVal(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
-            className={`app-input ${!icon ? "ps-3" : "ps-9"} ${
+            className={`app-input ${!icon ? "ps-3" : "ps-9"} ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
               fieldError ? "!bg-red-100" : ""
             }`}
           />
@@ -109,10 +112,19 @@ export default memo(function AppInput({
               setVal(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
-            className={`app-input ${ps ? ps : !icon ? "ps-4" : "ps-9"}  ${
-              fieldError ? "!bg-red-100" : ""
+            className={`app-input ${ps ? ps : !icon ? "ps-4" : "ps-9"}  ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
+              fieldError && fieldError.length > 0 ? "!bg-red-100" : ""
             }`}
           />
+        )}
+        {rightComponent && (
+          <span
+            className={`absolute text-sm inline-block right-3 opacity-60 ${
+              textarea ? "top-4" : "top-1/2 -translate-y-1/2"
+            }`}
+          >
+            {rightComponent}
+          </span>
         )}
       </div>
       {fieldError && fieldError.length > 0 && (

@@ -22,3 +22,5 @@ export type ServiceResponse<T = any, E = any> = [T, null] | [null, E];
 
 export type AppLayoutProps = Readonly<{ children: React.ReactNode }>;
 export type AppPageProps<T = any, K = any> = { params?: T, searchParams?: K };
+
+export type ServiceStatus = "idle" | "loading" | "success" | "error";

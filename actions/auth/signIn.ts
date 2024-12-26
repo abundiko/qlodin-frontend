@@ -30,8 +30,8 @@ export async function signInAction(
   const tryParse = schema.safeParse(data);
   if (!tryParse.success)
     return {
-      error: "Fix erros and submit",
-      fieldErrors: tryParse.error.flatten().fieldErrors,
+      error: "Email or Password is incorrect",
+      // fieldErrors: tryParse.error.flatten().fieldErrors,
     };
 
   const [res, error] = await ApiRequest.post<ApiResponse>(

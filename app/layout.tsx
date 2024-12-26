@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Quicksand, Playfair } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import { FirebaseWrapper } from "@/components/hoc";
+import { FirebaseWrapper, QueryClientWrapper } from "@/components/hoc";
 import { createMetadata } from "@/functions/metadata";
 
 export const metadata: Metadata = createMetadata({
@@ -32,12 +32,14 @@ export default function RootLayout({
       <body
         className={`${quicksandFont.variable} ${playfairFont.variable} font-quicksand`}
       >
-        <FirebaseWrapper>
-          <main>
-            {children}
-            <Toaster />
-          </main>
-        </FirebaseWrapper>
+        <QueryClientWrapper>
+          <FirebaseWrapper>
+            <main>
+              {children}
+              <Toaster />
+            </main>
+          </FirebaseWrapper>
+        </QueryClientWrapper>
       </body>
     </html>
   );
