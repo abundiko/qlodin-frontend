@@ -11,7 +11,7 @@ export async function isUsernameAvailable(userName: string) {
     { userName }
   );
 
-  debugLog({req, err})
+  // debugLog({req, err})
 
   if (err || !req) return "connection failed";
   if (req.status === 400) return "username already taken";

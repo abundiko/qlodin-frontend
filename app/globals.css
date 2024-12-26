@@ -80,7 +80,7 @@ body {
   }
 
   .app-select {
-    @apply w-full border outline-primary text-neutral-800 py-3 px-3 rounded-md bg-neutral-100;
+    @apply w-full border-transparent outline-primary text-neutral-800 py-3 px-3 rounded-md bg-neutral-100;
   }
 
   btn:disabled,
@@ -98,5 +98,45 @@ body {
 
   .btn-social-auth {
     @apply bg-[#DDDBFF] border border-[#DDDBFF] px-11 py-3 rounded-lg gap-3 font-semibold hover:bg-white disabled:pointer-events-none disabled:opacity-70 btn;
+  }
+}
+
+
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  ::-webkit-scrollbar-track {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    width: 8px;
+    height: 8px;
+    background-color: #01010144;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #010101;
+  }
+
+  .multi-range-slider .thumb .caption * {
+    display: none !important;
   }
 }

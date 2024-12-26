@@ -15,6 +15,7 @@ const schema = z.object({
   userName: __validators.userName,
   mobileNumber: __validators.phone,
   dateOfBirth: __validators.dateOfBirth,
+  gender: z.string().min(2, "Please select a gender"),
 });
 
 type FormType = z.infer<typeof schema>;

@@ -54,7 +54,7 @@ export function PhoneNumberWithCodeInput({
           className="app-input ps-3"
         />
       </div>
-      {error && <p className="text-red-500 text-[10px]">{error}</p>}
+      {error && <p className="text-red-900 text-xs">{error}</p>}
     </div>
   );
 }

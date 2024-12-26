@@ -15,7 +15,7 @@ export type AppSelectOption = {
   value: string;
 };
 
-export type AppSelectProps = Omit<AppInputProps, "placeholder"> & {
+export type AppSelectProps = AppInputProps & {
   options: (string | AppSelectOption)[];
   variant?: "app-select" | "app-select-underline";
 };
@@ -29,6 +29,7 @@ export default function AppSelect({
   onChange,
   error: fieldError,
   variant = "app-select",
+  placeholder = "-- select --",
 }: AppSelectProps) {
   return (
     <div>
@@ -47,7 +48,7 @@ export default function AppSelect({
         name={name}
       >
         <SelectTrigger className={variant}>
-            <SelectValue placeholder="-- select --" />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

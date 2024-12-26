@@ -7,7 +7,7 @@ import { HiEye } from "react-icons/hi2";
 export type AppInputProps = {
   icon?: React.ReactNode;
   rightComponent?: React.ReactNode;
-  placeholder: string;
+  placeholder?: string;
   value?: string;
   name: string;
   type?: string;

@@ -1,4 +1,5 @@
 // misc
+export { suggestUsernamesWithAi } from "./misc/suggestUsernamesWithAi";
 
 // auth
 export { signInAction } from "./auth/signIn";
