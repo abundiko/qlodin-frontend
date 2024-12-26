@@ -35,7 +35,6 @@ const SignupForm = () => {
         </div>
         <FormButton
           disabled={status !== "success"}
-          loading={false}
           className="btn-form"
         >
           Next

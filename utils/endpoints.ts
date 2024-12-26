@@ -8,12 +8,11 @@ export const __endpoints = {
       signUpVerifyEmail: `${API_HOST}/user/auth/verify-email`,
       signUpVerifyEmailResendCode: `${API_HOST}/user/auth/resend-otp`,
       signUpProfileSetup: `${API_HOST}/user/auth/profile-setup`,
-<<<<<<< HEAD
-      usernameAvailabity: `${API_HOST}/user/auth/username-availability`,
-      emailAvailabity: `${API_HOST}/user/auth/email-availability`,
-=======
-      forgotpassword:`${API_HOST}/user/auth/forgot-password`,
->>>>>>> feature/forgotpassword
+      usernameAvailabity: `${API_HOST}/user/auth/validate-username`,
+      emailAvailabity: `${API_HOST}/user/auth/validate-email`,
+      forgotPassword: `${API_HOST}/user/auth/forgot-password`,
+      forgotPasswordReset: `${API_HOST}/user/auth/reset-password`,
+      forgotPasswordResend: `${API_HOST}/user/auth/resend-reset-code`,
     },
   },
 } as const;

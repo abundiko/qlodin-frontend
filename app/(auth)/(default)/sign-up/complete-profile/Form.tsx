@@ -6,6 +6,7 @@ import {
   AppInputProps,
   FormButton,
   FormMessage,
+  InputStatusCheckerIcon,
   PhoneNumberWithCodeInput,
 } from "@/components/formComponents";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -13,14 +14,15 @@ import { LuCake, LuUser } from "react-icons/lu";
 import { useActionState, useState } from "react";
 import Link from "next/link";
 import { __paths } from "@/utils";
+import { useUsernameChecker } from "@/hooks";
 
 const Form = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const { status, username, setUsername, usernameError } = useUsernameChecker();
   const [state, _action] = useActionState(signUpProfileSetupAction, {});
 
   async function action(formData: FormData) {
     formData.append("mobileNumber", phoneNumber);
-
     return _action(formData);
   }
 
@@ -38,19 +40,27 @@ const Form = () => {
               />
             ))}
           </div>
-          {fields2.map((field, index) => (
-            <AppInput
-              {...field}
-              key={index}
-              error={state?.fieldErrors?.[field.name]}
-            />
-          ))}
+          {/* {fields2.map((field, index) => ( */}
+          <AppInput
+            {...fields2[0]}
+            error={state?.fieldErrors?.[fields2[0].name]}
+          />
+          <AppInput
+            {...fields2[1]}
+            error={
+              [usernameError ?? ""] ?? state?.fieldErrors?.[fields2[1].name]
+            }
+            onChange={setUsername}
+            value={username}
+            rightComponent={<InputStatusCheckerIcon status={status} />}
+          />
+          {/* ))} */}
           <PhoneNumberWithCodeInput
             defaultValue={phoneNumber}
             onChangeText={setPhoneNumber}
           />
         </div>
-        <FormButton loading={false} className="btn-form">
+        <FormButton disabled={status !== "success"} className="btn-form">
           Continue
         </FormButton>
         <div className="flex gap-2 items-center justify-center">

@@ -1,43 +1,65 @@
-import { ApiResponse, ServiceStatus } from "@/types";
-import { __endpoints, ApiRequest } from "@/utils";
+import { isUsernameAvailable } from "@/actions/client";
+import { debugLog } from "@/functions/debug";
+import { ServiceStatus } from "@/types";
+import { __validators } from "@/utils";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useSimpleDebounce } from "./useSimpleDebounce";
-import toast from "react-hot-toast";
-
-async function isUsernameAvailable(username: string) {
-  const [req, err] = await ApiRequest.post<ApiResponse>(
-    __endpoints.user.auth.usernameAvailabity,
-    { username }
-  );
-
-  if (err || !req) return "connection failed";
-  if (req.status !== 200) return "username already taken";
-  return true;
-}
 
 export function useUsernameChecker() {
   const [status, setStatus] = useState<ServiceStatus>("idle");
   const [username, setUsername] = useState("");
-  const [debouncedValue] = useSimpleDebounce(username);
+  const [usernameError, setUsernameError] = useState<string | undefined>(
+    undefined
+  );
+  const [debouncedValue] = useSimpleDebounce(username, 1000);
 
   useEffect(() => {
-    async function checkUsername() {
-      setStatus("loading");
-      const res = await isUsernameAvailable(debouncedValue);
-      if (res === true) {
-        setStatus("success");
-      } else {
-        toast.error(res);
-        setStatus("error");
-      }
+    setStatus("idle");
+    if (
+      !!username.trim() &&
+      __validators.userName.safeParse(username).success
+    ) {
+      setUsernameError(undefined);
+    } else if (username.trim().length > 0) {
+      setUsernameError(
+        "should be lowercase, no spaces, only numbers or underscore allowed"
+      );
+    } else {
+      setUsernameError(undefined);
     }
+  }, [username]);
 
-    if (debouncedValue) checkUsername();
-  }, [debouncedValue]);
+  const { data, isLoading } = useQuery({
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+    queryKey: ["check_username", debouncedValue],
+    queryFn: async () => {
+      setStatus("loading");
+      debugLog("checking username availability");
+      if (usernameError || !debouncedValue) return null;
+      return isUsernameAvailable(debouncedValue);
+    },
+  });
+
+  useEffect(() => {
+    if (isLoading) setStatus("loading");
+    else if (data === true) {
+      setStatus("success");
+      setUsernameError(undefined);
+    } else if (typeof data === "string") {
+      setStatus("error");
+      setUsernameError(data);
+    } else {
+      setStatus("idle");
+    }
+  }, [data, isLoading]);
 
   return {
     status,
     username,
     setUsername,
+    usernameError,
   };
 }

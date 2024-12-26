@@ -13,7 +13,7 @@ export default function InputStatusCheckerIcon({
     case "loading":
       return <LuLoader className="animate-spin" />;
     case "success":
-      return <HiCheckCircle className="text-green-500" />;
+      return <HiCheckCircle title="available" className="text-green-500" />;
     case "error":
       return <LuX className="text-red-500" />;
   }

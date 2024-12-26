@@ -8,51 +8,97 @@ import {
   FormMessage,
 } from "@/components/formComponents";
 
-
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 
 import { __paths } from "@/utils";
 import { LuMail } from "react-icons/lu";
+import PinField from "react-pin-field";
 
 const Form = () => {
-    const [state, action] = useActionState(forgotpasswordActions, {});
+  const [stage, setStage] = useState<"email" | "code">("email");
+  const [code, setCode] = useState("");
+  const pinputRef = useRef<HTMLInputElement[]>(null);
+  const [state, _action] = useActionState(forgotpasswordActions, {});
+
+  useEffect(() => {
+    if (state.success && stage === "email") {
+      setStage("code");
+    }
+  }, [state]);
+
+  async function action(formData: FormData) {
+    if (code) formData.append("resetCode", code);
+    return _action(formData);
+  }
+
   return (
-    <main id="content" role="main" className="w-full  max-w-md mx-auto p-6">
-    <div className="mt-7 bg-white  rounded-xl shadow-lg dark:bg-gray-800 dark:border-gray-700 border-2 border-indigo-300">
-      <div className="p-4 sm:p-7">
- 
-        <div className="mt-5">
-        <form action={action}>
-        <div className="flex items-stretch mb-6 gap-4 flex-col">
-          <FormMessage res={state} />
-          {fields.map((field, index) => (
+    <form action={action}>
+      <div className="flex items-stretch mb-6 gap-4 flex-col">
+        <FormMessage res={state} />
+        {fields.map((field, index) => (
+          <AppInput
+            {...field}
+            key={index}
+            error={state?.fieldErrors?.[field.name]}
+            readonly={stage !== "email"}
+          />
+        ))}
+        {stage === "code" && (
+          <div className="flex flex-col items-center">
+            <label>Enter verification code</label>
+            <div className="flex justify-center items-center gap-2">
+              <PinField
+                ref={pinputRef}
+                length={6}
+                validate={/^[0-9]$/}
+                className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                onChange={setCode}
+              />
+            </div>
+          </div>
+        )}
+        {stage === "code" &&
+          passWordFields.map((field, index) => (
             <AppInput
               {...field}
               key={index}
               error={state?.fieldErrors?.[field.name]}
             />
           ))}
-     
-        </div>
-        <FormButton loading={false} className="btn-form">
-          Send
-        </FormButton>
-      </form>
-        </div>
       </div>
-    </div>
+      <FormButton
+        disabled={stage === "code" && code.length < 6}
+        loading={false}
+        className="btn-form"
+      >
+        Continue
+      </FormButton>
+    </form>
+  );
+};
 
-
-  </main>
-  )
-}
-
-export default Form
+export default Form;
 
 const fields: AppInputProps[] = [
-    {
-      type: "email",
-      placeholder: "Email Address",
-      name: "email",
-      icon: <LuMail />,
-    },]
+  {
+    type: "email",
+    placeholder: "Email Address",
+    name: "email",
+    icon: <LuMail />,
+  },
+];
+
+const passWordFields: AppInputProps[] = [
+  {
+    type: "password",
+    placeholder: "New Password",
+    name: "newPassword",
+    icon: <LuMail />,
+  },
+  {
+    type: "password",
+    placeholder: "Confirm New Password",
+    name: "confirmPassword",
+    icon: <LuMail />,
+  },
+];

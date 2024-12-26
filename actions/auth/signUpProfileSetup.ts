@@ -3,14 +3,8 @@
 import { debugLog } from "@/functions/debug";
 import { formDataToObject } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
-import {
-  __cookies,
-  __endpoints,
-  __paths,
-  __validators,
-  
-} from "@/utils";
-import {AuthRequest} from "@/utils/authRequest"
+import { __cookies, __endpoints, __paths, __validators } from "@/utils";
+import { AuthRequest } from "@/utils/authRequest";
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
@@ -48,7 +42,7 @@ export async function signUpProfileSetupAction(
   debugLog(res);
 
   if (res.status === 200) {
-    const { get, delete:del } = await cookies();
+    const { get, delete: del } = await cookies();
     const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
     del(__cookies.next_path);
     redirect(nextPath, RedirectType.replace);

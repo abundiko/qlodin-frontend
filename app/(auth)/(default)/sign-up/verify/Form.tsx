@@ -15,11 +15,11 @@ import PinField from "react-pin-field";
 
 const SignupForm = ({ email }: { email: string }) => {
   const [code, setCode] = useState("");
+  const pinputRef = useRef<HTMLInputElement[]>(null);
   const { allow, allowed, formattedTime, disallow } = useWaitTillAction(
     15 * 1000
   ); //rensend verification code after 15 secs
   const formRef = useRef<HTMLFormElement>(null);
-  const pinputRef = useRef<HTMLInputElement[]>(null);
   const [state, _action, submitting] = useActionState(
     signUpVerifyEmailAction,
     {}

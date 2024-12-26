@@ -54,6 +54,7 @@ async function customFetch<T = any, E = any>(
       ...options,
       signal: AbortSignal.timeout(15 * 1000), // 10 seconds
     });
+    // debugLog("text:", await req.text());
     return [(await req.json()) as T, null];
   } catch (error) {
     return [null, error as E];
