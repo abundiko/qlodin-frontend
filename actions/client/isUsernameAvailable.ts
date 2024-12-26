@@ -8,7 +8,7 @@ export async function isUsernameAvailable(userName: string) {
 
   const [req, err] = await ApiRequest.post<ApiResponse>(
     __endpoints.user.auth.usernameAvailabity,
-    { username: userName }
+    { userName }
   );
 
   debugLog({req, err})
