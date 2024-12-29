@@ -9,8 +9,9 @@ import { z } from "zod";
 const schema = z.object({
   email: __validators.email,
   resetCode: __validators.otp6.optional(),
-  newPassword: __validators.password.optional(),
+  password: __validators.password.optional(),
   confirmPassword: __validators.password.optional(),
+  token: z.string().optional(),
 });
 
 type FormType = z.infer<typeof schema>;
@@ -29,9 +30,9 @@ export async function forgotpasswordActions(
       fieldErrors: tryParse.error.flatten().fieldErrors,
     };
 
-  if (data.newPassword && data.confirmPassword && data.resetCode) {
+  if (data.password && data.confirmPassword && data.token) {
     // resetting password
-    if (data.newPassword !== data.confirmPassword)
+    if (data.password !== data.confirmPassword)
       return {
         fieldErrors: {
           newPassword: ["Passwords do not match"],
@@ -46,6 +47,26 @@ export async function forgotpasswordActions(
     if (error || !res) return { error: "Connection failed" };
 
     if (res.status === 200) redirect(__paths.signIn, RedirectType.replace);
+    else
+      return {
+        error: res.message ?? "Something went wrong, please try again",
+      };
+  }
+  if (data.resetCode) {
+    // validating email and reset code
+    const [res, error] = await ApiRequest.post<ApiResponse>(
+      __endpoints.user.auth.forgotPasswordVerifyCode,
+      data
+    );
+    if (error || !res) return { error: "Connection failed" };
+
+    // console.log({ res });
+
+    if (res.status === 200)
+      return {
+        success: "Provide your new password",
+        data: { token: res.data.token },
+      };
     else
       return {
         error: res.message ?? "Something went wrong, please try again",

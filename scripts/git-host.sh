@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added username suggestion with ai on sign-up/complete-profile page"
+git commit -m "modified forgot-password features"
 
 git push origin2 dev

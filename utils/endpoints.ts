@@ -11,6 +11,7 @@ export const __endpoints = {
       usernameAvailabity: `${API_HOST}/user/auth/validate-username`,
       emailAvailabity: `${API_HOST}/user/auth/validate-email`,
       forgotPassword: `${API_HOST}/user/auth/forgot-password`,
+      forgotPasswordVerifyCode: `${API_HOST}/user/auth/verify-resetcode`,
       forgotPasswordReset: `${API_HOST}/user/auth/reset-password`,
       forgotPasswordResend: `${API_HOST}/user/auth/resend-reset-code`,
     },

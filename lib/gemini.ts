@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai"; // https://aistudio.google.com/apikey
 
 // Initialize Gemini SDK
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? "");
@@ -58,13 +58,13 @@ export const GeminiService = {
   suggestUsernames,
 };
 
-async function start() {
-  console.log(
-    await GeminiService.suggestUsernames({
-      firstName: "big boy",
-      lastName: "lexy",
-    })
-  );
-}
+// async function start() {
+//   console.log(
+//     await GeminiService.suggestUsernames({
+//       firstName: "big boy",
+//       lastName: "lexy",
+//     })
+//   );
+// }
 
-start();
+// start();

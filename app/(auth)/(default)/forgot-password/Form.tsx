@@ -15,19 +15,23 @@ import { LuMail } from "react-icons/lu";
 import PinField from "react-pin-field";
 
 const Form = () => {
-  const [stage, setStage] = useState<"email" | "code">("email");
+  const [stage, setStage] = useState<"email" | "code" | "password">("email");
   const [code, setCode] = useState("");
+  const [token, setToken] = useState<string | undefined>(undefined);
   const pinputRef = useRef<HTMLInputElement[]>(null);
   const [state, _action] = useActionState(forgotpasswordActions, {});
 
   useEffect(() => {
-    if (state.success && stage === "email") {
-      setStage("code");
+    if (state.success && stage === "email") setStage("code");
+    if (state.success && stage === "code") {
+      setToken(state.data.token);
+      setStage("password");
     }
   }, [state]);
 
   async function action(formData: FormData) {
     if (code) formData.append("resetCode", code);
+    if (token) formData.append("token", token);
     return _action(formData);
   }
 
@@ -57,7 +61,7 @@ const Form = () => {
             </div>
           </div>
         )}
-        {stage === "code" &&
+        {stage === "password" &&
           passWordFields.map((field, index) => (
             <AppInput
               {...field}
@@ -92,7 +96,7 @@ const passWordFields: AppInputProps[] = [
   {
     type: "password",
     placeholder: "New Password",
-    name: "newPassword",
+    name: "password",
     icon: <LuMail />,
   },
   {
