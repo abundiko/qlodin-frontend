@@ -2,14 +2,15 @@ import { debugLog } from "@/functions/debug";
 import { ServiceResponse } from "@/types";
 
 export const ApiRequest = {
-  post<T = any>(url: string, body: any) {
+  post<T = any>(url: string, body: any, init: RequestInit = {}) {
     debugLog(body);
     return customFetch<T>(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...init.headers,
       },
-      body: JSON.stringify(body),
+      body: init.body ?? JSON.stringify(body),
       signal: AbortSignal.timeout(15 * 1000), // 10 seconds
     });
   },

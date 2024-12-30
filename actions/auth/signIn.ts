@@ -12,13 +12,16 @@ import {
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
+import { verifyGoogleCaptcha } from "../misc/verifyGoogleCaptcha";
 
 const schema = z.object({
   email: __validators.email,
   password: __validators.password,
 });
 
-type FormType = z.infer<typeof schema>;
+type FormType = z.infer<typeof schema> & {
+  "g-recaptcha-response": string;
+};
 
 export async function signInAction(
   _: ActionResponse,
@@ -33,6 +36,12 @@ export async function signInAction(
       error: "Email or Password is incorrect",
       // fieldErrors: tryParse.error.flatten().fieldErrors,
     };
+
+  // verify google captcha
+  if (!data["g-recaptcha-response"])
+    return { error: "please solve the captcha" };
+  if (!(await verifyGoogleCaptcha(data["g-recaptcha-response"])))
+    return { error: "captcha verification failed" };
 
   const [res, error] = await ApiRequest.post<ApiResponse>(
     __endpoints.user.auth.signIn,

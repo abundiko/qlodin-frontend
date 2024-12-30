@@ -8,3 +8,4 @@ export {
 } from "./PhoneNumberWithCodeInput";
 export { default as InputStatusCheckerIcon } from "./InputStatusCheckerIcon";
 export { default as UsernameSuggestions } from "./UsernameSuggestions";
+export { default as AppCaptcha } from "./AppCaptcha";

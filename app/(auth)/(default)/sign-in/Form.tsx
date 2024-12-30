@@ -2,19 +2,32 @@
 
 import { signInAction } from "@/actions";
 import {
+  AppCaptcha,
   AppInput,
   AppInputProps,
   FormButton,
   FormMessage,
 } from "@/components/formComponents";
-import { LuLock, LuMail } from "react-icons/lu";
-import Link from "next/link";
-import { useActionState } from "react";
-import SocialAuth from "./SocialAuth";
+import { useRecaptcha } from "@/hooks";
 import { __paths } from "@/utils";
+import Link from "next/link";
+import { useActionState, useEffect } from "react";
+import { LuLock, LuMail } from "react-icons/lu";
+import SocialAuth from "./SocialAuth";
 
 const SigninForm = () => {
-  const [state, action] = useActionState(signInAction, {});
+  const [state, _action] = useActionState(signInAction, {});
+  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
+
+  useEffect(() => {
+    recaptchaRef.current?.reset();
+  }, [state]);
+
+  // extra step to handle captcha
+  function action(formData: FormData) {
+    if (capchaToken) formData.set("recaptcha", capchaToken);
+    return _action(formData);
+  }
 
   return (
     <>
@@ -34,8 +47,16 @@ const SigninForm = () => {
           >
             Forgot password?
           </Link>
+          <AppCaptcha
+            recaptchaRef={recaptchaRef}
+            handleRecaptcha={handleRecaptcha}
+          />
         </div>
-        <FormButton loading={false} className="btn-form">
+        <FormButton
+          disabled={!capchaToken}
+          loading={false}
+          className="btn-form"
+        >
           Login
         </FormButton>
       </form>

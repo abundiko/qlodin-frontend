@@ -1,5 +1,6 @@
 // misc
 export { suggestUsernamesWithAi } from "./misc/suggestUsernamesWithAi";
+export { verifyGoogleCaptcha } from "./misc/verifyGoogleCaptcha";
 
 // auth
 export { signInAction } from "./auth/signIn";

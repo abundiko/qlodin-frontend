@@ -1,6 +1,12 @@
+
 const API_HOST = "https://qlodin-backend.onrender.com/api";
 
 export const __endpoints = {
+  google: {
+    captcha: {
+      verify: `https://www.google.com/recaptcha/api/siteverify`,
+    },
+  },
   user: {
     auth: {
       signIn: `${API_HOST}/user/auth/login`,
