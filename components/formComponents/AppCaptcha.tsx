@@ -1,19 +1,19 @@
-import ReCAPTCHA from "react-google-recaptcha";
+import Turnstile from "react-turnstile";
 
-const client_site_key = process.env.NEXT_PUBLIC_GOOGLE_CAPTCHA_SITE_KEY ?? "";
+const client_site_key = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export default function AppCaptcha({
-  recaptchaRef,
-  handleRecaptcha,
+  onTokenChange,
 }: {
-  recaptchaRef: React.RefObject<ReCAPTCHA | null>;
-  handleRecaptcha: (token: string | null) => void;
+  onTokenChange: (token: string | null) => void;
 }) {
   return (
-    <ReCAPTCHA
-      ref={recaptchaRef}
+    <Turnstile
       sitekey={client_site_key}
-      onChange={handleRecaptcha}
+      onVerify={onTokenChange}
+      onExpire={() => onTokenChange(null)}
+        fixedSize={true}
+      theme="light"
     />
   );
 }

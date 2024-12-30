@@ -8,7 +8,7 @@ import {
   FormButton,
   FormMessage,
 } from "@/components/formComponents";
-import { useRecaptcha } from "@/hooks";
+import { useTurnstileCaptcha } from "@/hooks";
 import { __paths } from "@/utils";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
@@ -17,15 +17,15 @@ import SocialAuth from "./SocialAuth";
 
 const SigninForm = () => {
   const [state, _action] = useActionState(signInAction, {});
-  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
+  const { turnstile, onTokenChange, token } = useTurnstileCaptcha();
 
   useEffect(() => {
-    recaptchaRef.current?.reset();
+    if (turnstile && turnstile.reset) turnstile.reset();
   }, [state]);
 
   // extra step to handle captcha
   function action(formData: FormData) {
-    if (capchaToken) formData.set("recaptcha", capchaToken);
+    if (token) formData.set("recaptcha", token);
     return _action(formData);
   }
 
@@ -47,16 +47,9 @@ const SigninForm = () => {
           >
             Forgot password?
           </Link>
-          <AppCaptcha
-            recaptchaRef={recaptchaRef}
-            handleRecaptcha={handleRecaptcha}
-          />
+          <AppCaptcha onTokenChange={onTokenChange} />
         </div>
-        <FormButton
-          disabled={!capchaToken}
-          loading={false}
-          className="btn-form"
-        >
+        <FormButton disabled={!token} loading={false} className="btn-form">
           Login
         </FormButton>
       </form>

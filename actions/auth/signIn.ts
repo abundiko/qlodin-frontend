@@ -13,6 +13,7 @@ import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
 import { verifyGoogleCaptcha } from "../misc/verifyGoogleCaptcha";
+import { debugLog } from "@/functions/debug";
 
 const schema = z.object({
   email: __validators.email,
@@ -28,6 +29,7 @@ export async function signInAction(
   formData: FormData
 ): Promise<ActionResponse> {
   const data = formDataToObject<FormType>(formData);
+  debugLog({data})
 
   // validate the input fields
   const tryParse = schema.safeParse(data);
