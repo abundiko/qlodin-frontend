@@ -46,7 +46,7 @@ export async function forgotpasswordActions(
     );
     if (error || !res) return { error: "Connection failed" };
 
-    if (res.status === 200) redirect(__paths.signIn, RedirectType.replace);
+    if (res.status === 200) redirect(__paths.user, RedirectType.replace);
     else
       return {
         error: res.message ?? "Something went wrong, please try again",

@@ -7,6 +7,9 @@ export const __endpoints = {
       verify: `https://www.google.com/recaptcha/api/siteverify`,
     },
   },
+  cloudflare:{
+    verifyTurnstileCaptcha: "https://challenges.cloudflare.com/turnstile/v0/siteverify"
+  },
   user: {
     auth: {
       signIn: `${API_HOST}/user/auth/login`,

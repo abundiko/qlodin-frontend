@@ -21,6 +21,7 @@ const SigninForm = () => {
 
   useEffect(() => {
     if (turnstile && turnstile.reset) turnstile.reset();
+    onTokenChange(null);
   }, [state]);
 
   // extra step to handle captcha

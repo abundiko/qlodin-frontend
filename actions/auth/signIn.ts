@@ -3,17 +3,16 @@
 import { formDataToObject } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
 import {
+  __cookies,
   __endpoints,
   __paths,
   __validators,
-  __cookies,
   ApiRequest,
 } from "@/utils";
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
-import { verifyGoogleCaptcha } from "../misc/verifyGoogleCaptcha";
-import { debugLog } from "@/functions/debug";
+import { verifyTurnstileCaptcha } from "../misc/verifyTurnstileCaptcha";
 
 const schema = z.object({
   email: __validators.email,
@@ -21,7 +20,7 @@ const schema = z.object({
 });
 
 type FormType = z.infer<typeof schema> & {
-  "g-recaptcha-response": string;
+  "cf-turnstile-response": string;
 };
 
 export async function signInAction(
@@ -29,7 +28,6 @@ export async function signInAction(
   formData: FormData
 ): Promise<ActionResponse> {
   const data = formDataToObject<FormType>(formData);
-  debugLog({data})
 
   // validate the input fields
   const tryParse = schema.safeParse(data);
@@ -39,10 +37,10 @@ export async function signInAction(
       // fieldErrors: tryParse.error.flatten().fieldErrors,
     };
 
-  // verify google captcha
-  if (!data["g-recaptcha-response"])
+  // verify turnstile captcha
+  if (!data["cf-turnstile-response"])
     return { error: "please solve the captcha" };
-  if (!(await verifyGoogleCaptcha(data["g-recaptcha-response"])))
+  if (!(await verifyTurnstileCaptcha(data["cf-turnstile-response"])))
     return { error: "captcha verification failed" };
 
   const [res, error] = await ApiRequest.post<ApiResponse>(
