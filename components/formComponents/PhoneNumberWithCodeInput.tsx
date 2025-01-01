@@ -34,6 +34,11 @@ export function PhoneNumberWithCodeInput({
 
   return (
     <div>
+      <label
+          className="inline-block pb-1 text-black-300 font-inter text-sm"
+        >
+          Phone number
+        </label>
       <div className="flex space-x-2">
         <AppSelect
           name="countryCode"

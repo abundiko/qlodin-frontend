@@ -3,6 +3,7 @@ import SignupForm from "./Form";
 
 import React from "react";
 import Link from "next/link";
+import { FormButton } from "@/components/formComponents";
 
 const page = () => {
   return (
@@ -11,7 +12,10 @@ const page = () => {
         Sign Up
       </h2>
       <SignupForm />
+
+
       <div className="px-8 py-4 bg-opacity-50 flex justify-center">
+        
         <p className="text-sm text-gray-400">
           Already have an account?{" "}
           <Link href={__paths.signIn} className="text-black hover:underline">

@@ -50,6 +50,7 @@ const Form = () => {
               />
             ))}
             <AppSelect
+              title="Gender"
               name="gender"
               options={["Male", "Female", "Rather not say"]}
               placeholder="Gender"
@@ -63,6 +64,7 @@ const Form = () => {
                 placeholder: "Driptag",
                 name: "userName",
                 icon: <LuUser />,
+                title: "Driptag",
               }}
               error={(() => {
                 const stateError = [usernameError].filter(
@@ -120,16 +122,19 @@ export default Form;
 
 const fields1: AppInputProps[] = [
   {
+    title: "First Name",
     placeholder: "First Name",
     name: "firstName",
     icon: <LuUser />,
   },
   {
+    title: "Last Name",
     placeholder: "Last Name",
     name: "lastName",
     icon: <LuUser />,
   },
   {
+    title: "Date of birth",
     type: "date",
     placeholder: "DD/MM/YYYY",
     name: "dateOfBirth",

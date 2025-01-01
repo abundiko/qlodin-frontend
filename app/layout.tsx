@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Quicksand, Playfair } from "next/font/google";
+import { Quicksand, Playfair, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { FirebaseWrapper, QueryClientWrapper } from "@/components/hoc";
 import { createMetadata } from "@/functions/metadata";
@@ -11,6 +11,11 @@ export const metadata: Metadata = createMetadata({
 });
 
 // fonts initialization
+const interFont = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "300"],
+  variable: "--font-inter",
+});
 const quicksandFont = Quicksand({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "300"],

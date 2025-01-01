@@ -15,6 +15,7 @@ const page = async ({}: AppPageProps) => {
         Welcome Back
       </h2>
       <LoginForm />
+      
       <div className="px-8 py-4 bg-opacity-50 flex justify-center">
         <p className="text-sm text-gray-400">
           Dont have an account?{" "}

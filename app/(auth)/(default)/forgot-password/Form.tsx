@@ -85,6 +85,7 @@ export default Form;
 
 const fields: AppInputProps[] = [
   {
+    title: "Email",
     type: "email",
     placeholder: "Email Address",
     name: "email",
@@ -94,6 +95,7 @@ const fields: AppInputProps[] = [
 
 const passWordFields: AppInputProps[] = [
   {
+    title: "Password",
     type: "password",
     placeholder: "New Password",
     name: "password",

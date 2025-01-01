@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added turnstile captcha to sign in page"
+git commit -m "added password checker and updated auth ui"
 
 git push origin2 dev

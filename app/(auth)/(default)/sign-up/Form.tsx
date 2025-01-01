@@ -9,12 +9,15 @@ import {
   InputStatusCheckerIcon,
 } from "@/components/formComponents";
 import { LuLock, LuMail } from "react-icons/lu";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useEmailChecker } from "@/hooks";
+import SocialAuth from "./SocialAuth";
+import ShowPasswordStrength from "@/components/formComponents/ShowPasswordStrength";
 
 const SignupForm = () => {
   const [state, action] = useActionState(signUpAction, {});
   const { status, email, setEmail, emailError } = useEmailChecker();
+  const [password, setPassword] = useState("");
 
   return (
     <>
@@ -38,11 +41,14 @@ const SignupForm = () => {
           <AppInput
             {...fields[1]}
             error={state?.fieldErrors?.[fields[1].name]}
+            onChange={setPassword}
           />
+          <ShowPasswordStrength password={password} />
         </div>
         <FormButton disabled={status !== "success"} className="btn-form">
           Next
         </FormButton>
+        <SocialAuth />
       </form>
     </>
   );
@@ -52,12 +58,14 @@ export default SignupForm;
 
 const fields: AppInputProps[] = [
   {
+    title: "Email",
     type: "email",
     placeholder: "Email Address",
     name: "email",
     icon: <LuMail />,
   },
   {
+    title: "Password",
     type: "password",
     placeholder: "Password",
     name: "password",

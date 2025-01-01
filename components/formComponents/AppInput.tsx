@@ -48,7 +48,7 @@ export default memo(function AppInput({
   }, [value]);
 
   const [id] = useState(() => {
-    return title ? +title + "-input" : undefined;
+    return title ? title.replaceAll(" ", "-") + "-input" : undefined;
   });
 
   return (
@@ -56,7 +56,7 @@ export default memo(function AppInput({
       {title && (
         <label
           htmlFor={id}
-          className="inline-block pb-1 text-black-300 text-base"
+          className="inline-block pb-1 text-black-300 text-sm font-inter"
         >
           {title}
         </label>

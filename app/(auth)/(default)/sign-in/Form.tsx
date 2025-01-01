@@ -64,12 +64,14 @@ export default SigninForm;
 
 const fields: AppInputProps[] = [
   {
+    title: "Email",
     type: "email",
     placeholder: "Email Address",
     name: "email",
     icon: <LuMail />,
   },
   {
+    title: "Password",
     type: "password",
     placeholder: "Password",
     name: "password",
