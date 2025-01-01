@@ -13,6 +13,7 @@
     "@radix-ui/react-select": "^2.1.4",
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
+    "check-password-strength": "^2.0.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "country-codes-flags-phone-codes": "^1.1.1",
