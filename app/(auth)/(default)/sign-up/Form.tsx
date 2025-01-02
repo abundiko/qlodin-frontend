@@ -48,8 +48,8 @@ const SignupForm = () => {
         <FormButton disabled={status !== "success"} className="btn-form">
           Next
         </FormButton>
-        <SocialAuth />
       </form>
+      <SocialAuth />
     </>
   );
 };

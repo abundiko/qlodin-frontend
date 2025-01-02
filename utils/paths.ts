@@ -11,6 +11,7 @@ export const __paths = {
   signUp: "/sign-up",
   signUpVerifyEmail: "/sign-up/verify",
   signUpCompleteProfile: "/sign-up/complete-profile",
+  signUpGoogle: "/sign-up/google",
   forgotPassword: "/forgot-password",
 
   // profile

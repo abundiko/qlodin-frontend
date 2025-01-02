@@ -7,7 +7,6 @@ const ShowPasswordStrength = ({ password }: { password: string }) => {
     __validators.password.safeParse(password).error?.flatten().formErrors
       .length ?? 0;
   const strength = 4 - parse;
-  console.log({ strength, parse });
 
   return (
     <div className="flex gap-3">

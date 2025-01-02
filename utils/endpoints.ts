@@ -23,6 +23,8 @@ export const __endpoints = {
       forgotPasswordVerifyCode: `${API_HOST}/user/auth/verify-resetcode`,
       forgotPasswordReset: `${API_HOST}/user/auth/reset-password`,
       forgotPasswordResend: `${API_HOST}/user/auth/resend-reset-code`,
+      googleLogin: `${API_HOST}/user/auth/google-login`,
+      googleRegister: `${API_HOST}/user/auth/google-register`,
     },
   },
 } as const;
