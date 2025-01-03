@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added google auth register and login"
+git commit -m "fixed login captcha error and auth form actions"
 
 git push origin dev

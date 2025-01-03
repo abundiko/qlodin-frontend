@@ -75,7 +75,7 @@ const SignupForm = ({ email }: { email: string }) => {
         </p>
         <FormButton
           disabled={code.length < 6}
-          loading={false}
+          loading={submitting}
           className="btn-form"
         >
           Verify Email

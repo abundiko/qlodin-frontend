@@ -18,7 +18,7 @@ export async function verifyTurnstileCaptcha(token: string): Promise<boolean> {
     }
   );
 
-//   debugLog({ err, res });
+  debugLog({ err, res });
 
   if (err || !res || !res.success) return false;
   return true;

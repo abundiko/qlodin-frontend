@@ -23,7 +23,10 @@ const Form = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [fieldValues, setFieldValues] = useState<UsernameSuggestionParams>({});
   const { status, username, setUsername, usernameError } = useUsernameChecker();
-  const [state, _action] = useActionState(signUpProfileSetupAction, {});
+  const [state, _action, submitting] = useActionState(
+    signUpProfileSetupAction,
+    {}
+  );
 
   // function to update a single field
   function updateField(name: keyof UsernameSuggestionParams, value: string) {
@@ -87,7 +90,11 @@ const Form = () => {
             error={state?.fieldErrors?.["mobileNumber"]?.[0]}
           />
         </div>
-        <FormButton disabled={status !== "success"} className="btn-form">
+        <FormButton
+          disabled={status !== "success"}
+          loading={submitting}
+          className="btn-form"
+        >
           Continue
         </FormButton>
         <div className="flex gap-2 items-center justify-center">

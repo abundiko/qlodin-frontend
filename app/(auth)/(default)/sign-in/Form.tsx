@@ -16,7 +16,7 @@ import { LuLock, LuMail } from "react-icons/lu";
 import SocialAuth from "./SocialAuth";
 
 const SigninForm = () => {
-  const [state, _action] = useActionState(signInAction, {});
+  const [state, _action, isPending] = useActionState(signInAction, {});
   const { turnstile, onTokenChange, token } = useTurnstileCaptcha();
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const SigninForm = () => {
           </Link>
           <AppCaptcha onTokenChange={onTokenChange} />
         </div>
-        <FormButton disabled={!token} loading={false} className="btn-form">
+        <FormButton disabled={!token} loading={isPending} className="btn-form">
           Login
         </FormButton>
       </form>

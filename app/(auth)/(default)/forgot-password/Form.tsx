@@ -19,7 +19,7 @@ const Form = () => {
   const [code, setCode] = useState("");
   const [token, setToken] = useState<string | undefined>(undefined);
   const pinputRef = useRef<HTMLInputElement[]>(null);
-  const [state, _action] = useActionState(forgotpasswordActions, {});
+  const [state, _action, isPending] = useActionState(forgotpasswordActions, {});
 
   useEffect(() => {
     if (state.success && stage === "email") setStage("code");
@@ -72,7 +72,7 @@ const Form = () => {
       </div>
       <FormButton
         disabled={stage === "code" && code.length < 6}
-        loading={false}
+        loading={isPending}
         className="btn-form"
       >
         Continue
