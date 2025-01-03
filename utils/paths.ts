@@ -14,6 +14,11 @@ export const __paths = {
   signUpGoogle: "/sign-up/google",
   forgotPassword: "/forgot-password",
 
+  // onboarding
+  onboarding: "/onboarding",
+  onboardingPeopleToFollow: "/onboarding/people-to-follow",
+  onboardingComplete: "/onboarding/complete",
+
   // profile
   user: "/user",
 } as const;

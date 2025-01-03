@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "fixed login captcha error and auth form actions"
+git commit -m "setup layout for onboarding"
 
 git push origin dev
