@@ -1,27 +1,26 @@
 "use client";
 
+import StepperDots from "@/components/micro/StepperDots";
 // TODO: Implement the onboarding styles you resonate with page
 // in components/cards folder, create the OnboardingStyle component; this component will be used to display the styles
 // next button should go to __paths.onboardingPeopleToFollow
 
 import { __paths } from "@/utils";
 import Link from "next/link";
-import { useState } from "react";
+
 
 export default function Main() {
   // Static data for images and text
   const styles = [
-    { name: "Style 1", image: "/images/person.png" },
-    { name: "Style 2", image: "/images/person.png" },
-    { name: "Style 3", image: "/images/person.png" },
-    { name: "Style 4", image: "/images/person.png" },
-    { name: "Style 5", image: "/images/person.png" },
-    { name: "Style 6", image: "/images/person.png" },
+    { name: "Street Wears", image: "/images/style-2.png" },
+    { name: "Business Casua", image: "/images/style-1.png" }, // i dont know what is wrong here exaclty Add L in that Casua and look at the code
+    { name: "Street wears", image: "/images/style-2.png" },
+    { name: "Street wears", image: "/images/style-2.png" },
+    { name: "Street wears", image: "/images/style-2.png" },
+    { name: "Street wears", image: "/images/style-2.png" },
+ 
   ];
 
-  // State to track the current step
-  const [activeStep, setActiveStep] = useState(1);
-  const totalSteps = 3; // Number of steps (dots)
 
   return (
     <div className="bg-white">
@@ -34,8 +33,9 @@ export default function Main() {
               <img
                 alt={style.name}
                 src={style.image}
-                className="h-auto w-full max-w-[120px] sm:max-w-[180px] lg:max-w-[240px] rounded object-cover"
+                className="h-full w-full max-w-[120px] sm:max-w-[180px] lg:max-w-[240px] rounded object-cover"
               />
+              <p className="mt-2 text-sm font-medium text-gray-700">{style.name}</p>
             </div>
           ))}
         </div>
@@ -50,17 +50,8 @@ export default function Main() {
           </Link>
         </div>
 
-        {/* Transition Dots */}
-        <div className="mt-4 p-5 flex justify-center items-center space-x-2">
-          {Array.from({ length: totalSteps }).map((_, index) => (
-            <div
-              key={index}
-              className={`h-3 w-3 rounded-full transition-colors duration-300 ${
-                activeStep === index + 1 ? "bg-black" : "bg-gray-300"
-              }`}
-            ></div>
-          ))}
-        </div>
+        {/* Stepper Dots */}
+        <StepperDots totalDots={3} activeDot={0} />
       </div>
     </div>
   );

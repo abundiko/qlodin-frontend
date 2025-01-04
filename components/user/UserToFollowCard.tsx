@@ -3,9 +3,7 @@
 import StepperDots from "@/components/micro/StepperDots";
 import { __paths } from "@/utils";
 import Link from "next/link";
-// TODO: Implement the onboarding people to follow page
-// in components/user folder, create the UserToFollowCard component; this component will be used to display the users to follow
-// next button should go to __paths.onboardingComplete
+
 
 import React, { useState } from "react";
 
@@ -23,7 +21,7 @@ const users: User[] = [
   { name: "Jane", username: "@driptag", image: "/images/person.png" },
 ];
 
-export default function Main() {
+export default function UserToFollow() {
 
     
     
@@ -33,7 +31,7 @@ export default function Main() {
       {users.map((user, index) => (
         <div
           key={index}
-          className="p-3 flex items-center justify-between  cursor-pointer hover:bg-gray-200"
+          className="p-3 flex items-center justify-between cursor-pointer hover:bg-gray-200"
         >
           <div className="flex items-center">
             <img
@@ -66,8 +64,8 @@ export default function Main() {
           </Link>
         </div>
         <div className="mt-6 font-bold text-center">
-      <Link href="" > Skip</Link>
-        
+      
+         Skip
         </div>
 
         {/* Stepper Dots */}
