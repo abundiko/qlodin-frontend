@@ -13,7 +13,7 @@ export default function Main() {
   // Static data for images and text
   const styles = [
     { name: "Street Wears", image: "/images/style-2.png" },
-    { name: "Business Casua", image: "/images/style-1.png" }, // i dont know what is wrong here exaclty Add L in that Casua and look at the code
+    { name: "Business Casual", image: "/images/style-1.png" }, // i dont know what is wrong here exaclty Add L in that Casua and look at the code
     { name: "Street wears", image: "/images/style-2.png" },
     { name: "Street wears", image: "/images/style-2.png" },
     { name: "Street wears", image: "/images/style-2.png" },
@@ -29,10 +29,12 @@ export default function Main() {
         sm:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {/* Display static images */}
           {styles.map((style, index) => (
+            // do not map a div here, the instructions atop specify what component this should be
             <div key={index} className="flex flex-col items-center">
               <img
                 alt={style.name}
                 src={style.image}
+                // remove max width from these images, let them expand and look like the figma design
                 className="h-full w-full max-w-[120px] sm:max-w-[180px] lg:max-w-[240px] rounded object-cover"
               />
               <p className="mt-2 text-sm font-medium text-gray-700">{style.name}</p>

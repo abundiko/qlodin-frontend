@@ -31,6 +31,8 @@ export default function Main() {
     <section>
     <div className="max-w-sm mx-auto ">
       {users.map((user, index) => (
+            // do not map a div here, the instructions atop specify what component this should be
+
         <div
           key={index}
           className="p-3 flex items-center justify-between  cursor-pointer hover:bg-gray-200"
