@@ -42,7 +42,7 @@ export async function googleRegisterCompleteProfileAction(
 
   debugLog(res);
 
-  if (res.status === 200) {
+  if (res.status === 201) {
     const { get, delete: del } = await cookies();
     const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
     del(__cookies.next_path);

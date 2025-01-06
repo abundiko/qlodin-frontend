@@ -12,7 +12,7 @@ export default function SocialAuth() {
       </div>
       <div className="flex flex-col  gap-1 my-3">
         <SocialAuthButton
-          title="Sign in with Google"
+          title="Continue with Google"
           icon="/images/icons/google.svg"
           onClick={authWithGoogle}
           loading={googleLoading}

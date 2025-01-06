@@ -130,13 +130,13 @@ export default Form;
 const fields1: AppInputProps[] = [
   {
     title: "First Name",
-    placeholder: "First Name",
+    placeholder: "",
     name: "firstName",
     icon: <LuUser />,
   },
   {
     title: "Last Name",
-    placeholder: "Last Name",
+    placeholder: "",
     name: "lastName",
     icon: <LuUser />,
   },

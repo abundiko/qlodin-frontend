@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "setup layout for onboarding"
+git commit -m "modified google auth button, hook and fixed google register action"
 
 git push origin dev

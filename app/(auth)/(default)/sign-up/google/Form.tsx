@@ -28,14 +28,14 @@ const Form = ({ data }: { data: GoogleRegisterData }) => {
   const [fields1] = useState<AppInputProps[]>(() => [
     {
       title: "First Name",
-      placeholder: "First Name",
+      placeholder: "",
       name: "firstName",
       icon: <LuUser />,
       value: data.firstName,
     },
     {
       title: "Last Name",
-      placeholder: "Last Name",
+      placeholder: "",
       name: "lastName",
       icon: <LuUser />,
       value: data.lastName,
