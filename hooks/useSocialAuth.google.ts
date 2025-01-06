@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { googleLoginAction, googleRegisterAction } from "@/actions";
+import { debugLog } from "@/functions/debug";
+import { __paths } from "@/utils";
 import {
-  getAuth,
-  signInWithPopup,
   GoogleAuthProvider,
   User,
+  getAuth,
+  getRedirectResult,
+  signInWithRedirect
 } from "firebase/auth";
-import toast from "react-hot-toast";
-import { debugLog } from "@/functions/debug";
-import { googleLoginAction, googleRegisterAction } from "@/actions";
 import { useRouter } from "next/navigation";
-import { __paths } from "@/utils";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface GoogleAuthHook {
   loading: boolean;
@@ -28,8 +29,13 @@ export const useGoogleAuth = (): GoogleAuthHook => {
       setLoading(true);
 
       // Initiate Google Sign-In
-      const result = await signInWithPopup(auth, provider);
-      const user: User = result.user;
+      await signInWithRedirect(auth, provider);
+      const result = await getRedirectResult(auth, provider);
+      if (!result) {
+        toast.error("Google authentication error");
+        return;
+      }
+      let user: User = result.user;
 
       // check if the user is already registered
       const res = await googleLoginAction(user.email!, user.uid);
