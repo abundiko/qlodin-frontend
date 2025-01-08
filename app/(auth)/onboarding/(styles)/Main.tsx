@@ -20,7 +20,7 @@ export default function Main() {
 
     
         {/* Next Button */}
-        <div className="text-center bg-white ">
+        <div className="text-center p-4 bg-white ">
           <Link className="btn-form" href={__paths.onboardingPeopleToFollow}>
             Next
           </Link>
