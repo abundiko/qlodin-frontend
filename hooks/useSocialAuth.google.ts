@@ -6,6 +6,7 @@ import {
   User,
   getAuth,
   getRedirectResult,
+  signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
@@ -24,13 +25,13 @@ export const useGoogleAuth = (): GoogleAuthHook => {
   useEffect(() => {
     async function listenForAuth() {
       try {
-        setLoading(true);
+        // setLoading(true);
         // alert("hmm")
         // return;
 
         const auth = getAuth();
         // const provider = new GoogleAuthProvider();
-        
+
         const result = await getRedirectResult(auth);
         debugLog({ auth, result });
         if (!result) {
@@ -91,8 +92,9 @@ export const useGoogleAuth = (): GoogleAuthHook => {
       setLoading(true);
 
       // Initiate Google Sign-In
-      await signInWithRedirect(auth, provider);
-      const result = await getRedirectResult(auth);
+      // await signInWithRedirect(auth, provider);
+      // const result = await getRedirectResult(auth);
+      const result = await signInWithPopup(auth, provider);
       if (!result) {
         toast.error("Google authentication error");
         return;
