@@ -1,6 +1,7 @@
 import { countries } from "country-codes-flags-phone-codes";
 import { HTMLAttributes, useEffect, useState } from "react";
 import AppSelect from "./AppSelect";
+import { COUNTRY_FLAGS_API } from "@/constants";
 
 export type PhoneNumberWithCodeInputProps = HTMLAttributes<HTMLInputElement> & {
   onChangeText?: (value: string) => void;
@@ -24,8 +25,25 @@ export function PhoneNumberWithCodeInput({
 
   const [countriesWithCodes] = useState(() => {
     return Array.from(
-      new Set(countries.map((country) => country.dialCode))
-    ).sort();
+      countries
+        .map((country) => ({
+          title: (
+            <div className="flex gap-1">
+              <img
+                src={`${COUNTRY_FLAGS_API}/1x1/${country.code.toLowerCase()}.svg`}
+                className="h-4 object-contain"
+              />
+              <span>{country.dialCode}</span>
+            </div>
+          ),
+          value: country.dialCode,
+        }))
+        .filter(
+          (obj, index, self) =>
+            index === self.findIndex((o) => o.value === obj.value)
+        )
+        .sort((a, b) => a.value.localeCompare(b.value))
+    );
   });
 
   useEffect(() => {
@@ -34,18 +52,18 @@ export function PhoneNumberWithCodeInput({
 
   return (
     <div>
-      <label
-          className="inline-block pb-1 text-black-300 font-inter text-sm"
-        >
-          Phone number
-        </label>
+      <label className="inline-block pb-1 text-black-300 font-inter text-sm">
+        Phone number
+      </label>
       <div className="flex space-x-2">
-        <AppSelect
-          name="countryCode"
-          onChange={setValue}
-          value={value}
-          options={countriesWithCodes}
-        />
+        <div className="w-36">
+          <AppSelect
+            name="countryCode"
+            onChange={setValue}
+            value={value}
+            options={countriesWithCodes}
+          />
+        </div>
         <input
           {...props}
           type="number"

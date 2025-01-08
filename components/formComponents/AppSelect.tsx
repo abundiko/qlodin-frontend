@@ -9,9 +9,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AppInputProps } from "./AppInput";
+import { ReactNode } from "react";
 
 export type AppSelectOption = {
-  title: string;
+  title: ReactNode;
   value: string;
 };
 
