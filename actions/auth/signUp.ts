@@ -37,7 +37,7 @@ export async function signUpAction(
 
   debugLog(res);
 
-  if (res.status === 200) {
+  if (res.status === 201) {
     const { set } = await cookies();
     // set the user's email to the cookie (1 day)
     set(__cookies.register_state, data.email, { maxAge: 60 * 60 * 24 });

@@ -1,7 +1,7 @@
 'use client'
 
-import { HTMLAttributes, ReactNode } from "react";
 import { motion } from "framer-motion";
+import { HTMLAttributes } from "react";
 
 export default function FadeInWrapper(props: HTMLAttributes<HTMLDivElement>) {
   return (
