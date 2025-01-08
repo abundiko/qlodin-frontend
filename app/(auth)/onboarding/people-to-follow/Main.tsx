@@ -29,11 +29,11 @@ export default function Main() {
     
   return (
     <section>
-    <div className="max-w-sm mx-auto ">
+    <div className="max-w-sm mx-auto bg-[#F7F7F7] rounded-sm ">
       {users.map((user, index) => (
             // do not map a div here, the instructions atop specify what component this should be
 
-        <div
+        <div 
           key={index}
           className="p-3 flex items-center justify-between  cursor-pointer hover:bg-gray-200"
         >
