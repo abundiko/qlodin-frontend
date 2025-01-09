@@ -20,6 +20,7 @@ export function getFirebaseApp() {
       measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     };
 
+    
     // Initialize Firebase
     firebaseApp = initializeApp(firebaseConfig);
   }
