@@ -1,3 +1,6 @@
+"use client"
+import StepperDots from "@/components/micro/StepperDots";
+
 export default function Page() {
   return (
     <div className="flex flex-col items-center">
@@ -11,6 +14,9 @@ export default function Page() {
         {ILLUSTRATION}
       </div>
       <button className="mx-auto btn-black max-w-sm">Get Started</button>
+        {/* Stepper Dots */}
+        <StepperDots totalDots={3} activeDot={2} />
+
     </div>
   );
 }
