@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "modified google auth button, hook and fixed google register action"
+git commit -m "modified onboarding designs and fixed issues"
 
 git push origin dev
