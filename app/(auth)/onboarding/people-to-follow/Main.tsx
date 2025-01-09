@@ -1,21 +1,11 @@
 "use client";
 
 import StepperDots from "@/components/micro/StepperDots";
+import { UserToFollowCard } from "@/components/user";
 import { __paths } from "@/utils";
 import Link from "next/link";
-// TODO: Implement the onboarding people to follow page
-// in components/user folder, create the UserToFollowCard component; this component will be used to display the users to follow
-// next button should go to __paths.onboardingComplete
 
-import React, { useState } from "react";
-
-interface User {
-  name: string;
-  username: string;
-  image: string;
-}
-
-const users: User[] = [
+const users = [
   { name: "Qlodin", username: "@driptag", image: "/images/qlodin-logo.png" },
   { name: "John", username: "@driptag", image: "/images/person.png" },
   { name: "Jane", username: "@driptag", image: "/images/person.png" },
@@ -24,57 +14,29 @@ const users: User[] = [
 ];
 
 export default function Main() {
-
-    
-    
   return (
     <section>
-    <div className="max-w-sm mx-auto bg-[#F7F7F7] rounded-sm ">
-      {users.map((user, index) => (
-            // do not map a div here, the instructions atop specify what component this should be
+      <div className="max-w-sm mx-auto bg-[#F7F7F7] rounded-2xl overflow-y-auto ">
+        {users.map((user, index) => (
+          <UserToFollowCard key={index} {...user} />
+        ))}
+      </div>
 
-        <div 
-          key={index}
-          className="p-3 flex items-center justify-between  cursor-pointer hover:bg-gray-200"
+      {/* Next/Skip Buttons */}
+      <div className="max-w-[362px] grid grid-cols-2 mx-auto gap-2 mt-4">
+        <Link
+          href={__paths.onboardingComplete}
+          className="btn-neutral !text-black"
         >
-          <div className="flex items-center">
-            <img
-              className="rounded-full h-10 w-10"
-              src={user.image}
-              alt={user.name}
-            />
-            <div className="ml-2 flex flex-col">
-              <div className="leading-snug text-sm text-gray-900 font-bold">
-                {user.name}
-              </div>
-              <div className="leading-snug text-xs text-gray-600">
-                {user.username}
-              </div>
-            </div>
-          </div>
-          <button className="h-8 px-3 text-md  text-white border border-white  rounded-md bg-black">
-            Follow
-          </button>
-        </div>
-      ))}
-    </div>
-            {/* Next Button */}
-            <div className="mt-6 text-center">
-          <Link
-           className="btn-form"
-            href={__paths.onboardingComplete}
-          >
-            Next
-          </Link>
-        </div>
-        <div className="mt-6 font-bold text-center">
-      <Link href="" > Skip</Link>
-        
-        </div>
+          Skip
+        </Link>
+        <Link className="btn-black" href={__paths.onboardingComplete}>
+          Next
+        </Link>
+      </div>
 
-        {/* Stepper Dots */}
-        <StepperDots totalDots={3} activeDot={1} />
+      {/* Stepper Dots */}
+      <StepperDots totalDots={3} activeDot={1} />
     </section>
   );
 }
-
