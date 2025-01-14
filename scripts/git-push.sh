@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "modified onboarding designs and fixed issues"
+git commit -m "setup main layout"
 
 git push origin dev

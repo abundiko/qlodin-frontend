@@ -96,9 +96,10 @@ export const useGoogleAuth = (): GoogleAuthHook => {
       const result = await getRedirectResult(auth);
       // const result = await signInWithPopup(auth, provider);
       if (!result) {
-        toast.error("Google authentication error");
+        toast.error("Google authentication error 1");
         return;
       }
+
       let user: User = result.user;
 
       // check if the user is already registered

@@ -75,6 +75,10 @@ body {
   /* .app-input {
     @apply bg-neutral-100 w-full border outline-primary text-neutral-800 py-3 pe-3 rounded-md read-only:opacity-70 read-only:[&not[type="file"]]:pointer-events-none;
   } */
+  .app-container {
+    @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16;
+  }
+
   .app-input {
     @apply bg-light-100 w-full text-sm border border-light-100 outline-primary text-neutral-800 placeholder:text-neutral-600 py-2 pe-4 rounded-lg read-only:opacity-70 read-only:[&not[type="file"]]:pointer-events-none;
   }
@@ -93,7 +97,7 @@ body {
   }
 
   .btn-black {
-    @apply btn w-full !py-2.5 bg-dark-800 hover:bg-dark-800/80 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
+    @apply btn w-full py-2.5 bg-dark-800 hover:bg-dark-800/80 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
   }
   .btn-neutral {
     @apply btn w-full !py-2.5 bg-transparent hover:bg-transparent disabled:bg-dark-100  font-bold rounded-lg shadow-sm outline-primary;
@@ -107,7 +111,9 @@ body {
   }
 }
 
-
+.avatar {
+  @apply rounded-full bg-dark-100;
+}
 
 .hide-scrollbar {
   -ms-overflow-style: none;

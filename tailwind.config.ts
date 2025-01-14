@@ -15,8 +15,13 @@ export default {
         inter: ["var(--font-inter)"],
       },
       colors: {
+        figma: {
+          primary: "#0C0910"
+        },
         light: {
+          50: "#F7F7F7",
           100: "#F8F8F8",
+          200: "#d9d9d9",
         },
         dark: {
           100: "#BCBCBC",

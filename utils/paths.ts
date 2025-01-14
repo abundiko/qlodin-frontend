@@ -2,6 +2,11 @@ export const __paths = {
   // public
   index: "/",
 
+  wardrobe: "/wardrobe",
+  explore: "/explore",
+  community: "/community",
+  home: "/home",
+
   // legal
   termsOfService: "/terms-of-service",
   privacyPolicy: "/privacy-policy",
