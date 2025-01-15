@@ -77,6 +77,9 @@ export async function forgotpasswordActions(
       __endpoints.user.auth.forgotPassword,
       data
     );
+    console.log({res, error});
+    
+    
     if (error || !res) return { error: "Connection failed" };
 
     if (res.status === 200)

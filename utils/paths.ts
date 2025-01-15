@@ -26,4 +26,9 @@ export const __paths = {
 
   // profile
   user: "/user",
+  singleUser: (username: string) => `/user/@${username}`,
+  userLooks: (prefix = "/user") => `${prefix}`,
+  userCollections: (prefix = "/user") => `${prefix}/collections`,
+  userCatalogue: (prefix = "/user") => `${prefix}/catalogue`,
+  newLook: "/user/looks/new"
 } as const;
