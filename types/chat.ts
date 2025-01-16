@@ -7,7 +7,7 @@ export interface ChatType {
     messageCount: number; // Total number of messages
   }
 
-  export const chatData = [
+  export const dummyChats = [
     {
       id: "1",
       name: "Direct Message ",

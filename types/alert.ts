@@ -8,7 +8,7 @@ export interface AlertType {
   }
 
   
-  export const alertData = [
+  export const dummyAlerts = [
     {
       id: "1",
       name: "Alert/discount deal ",

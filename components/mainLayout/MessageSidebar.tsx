@@ -5,7 +5,7 @@
 // map the dummyChats and render ChatListTile
 
 import ChatListTile from "@/components/chat/ChatListTile";
-import { chatData } from "@/types/chat";
+import { dummyChats } from "@/types/chat";
 
 
 
@@ -16,7 +16,7 @@ export default function MessageSidebar() {
   return (
     <div className="">
       <div className="">
-        {chatData.map((chat) => (
+        {dummyChats.map((chat) => (
           <ChatListTile key={chat.id} chat={chat} />
         ))}
       </div>

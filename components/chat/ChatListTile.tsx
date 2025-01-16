@@ -22,7 +22,7 @@ export default function ChatListTile({ chat }: Props) {
       </div>
   
       {/* Content Section */}
-      <div className="flex flex-col flex-grow ml-4">
+      <div className="flex flex-col  flex-grow ml-4">
         {/* Name and Time */}
         <div className="flex justify-between  items-center">
           <p className="text-lg font-semibold text-gray-900">{chat.name}</p>

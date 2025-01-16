@@ -6,7 +6,7 @@
 
 import AlertListTile from "../alert/AlertListTile";
 import { AppIcons } from "../icons/AppIcons";
-import { alertData } from "@/types/alert"
+import { dummyAlerts } from "@/types/alert"
 
 
 
@@ -19,7 +19,7 @@ export default function AlertsSidebar() {
       </div>
       <div className=" ">
         <div className="">
-                {alertData.map((alert) => (
+                {dummyAlerts.map((alert) => (
                   <AlertListTile key={alert.id} alert={alert} />
                 ))}
               </div>

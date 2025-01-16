@@ -18,7 +18,7 @@ type Props = {
     <div className="w-full h-full max-w-sm border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
       <Link href="#">
         <img
-          className="rounded-lg object-cover lg:h-[500px] lg:w-[500px] md:h-[450px] md:w-[350px] sm:h-auto sm:w-auto "
+          className="aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]  rounded-lg overflow-hidden object-cover w-full h-full"
           src={look.image}
           alt="Look image"
         />
