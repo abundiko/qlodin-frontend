@@ -1,45 +1,42 @@
+import { LooksType, LooksTypePopulated } from '@/types/looks';
 import Link from 'next/link';
-import React from 'react';
+import React, { JSX } from 'react';
 import { FaComment } from 'react-icons/fa6';
 import { IoHeartSharp, IoPlaySharp } from "react-icons/io5";
-type LookTypePopulated = {
-  id: string;
-  image: string;
-  likes: number;
-  views: number;
-  comments: number;
-
-  
-};
+;
 
 type Props = {
-  look: LookTypePopulated;
+  look: LooksTypePopulated;
 };
 
-export default function lookCard({ look }: Props) {
+
+
+
+
+ function LookCard({ look }: Props ) {
   return (
     <div className="w-full h-full max-w-sm border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
       <Link href="#">
         <img
-          className="w-full rounded-lg "
+          className="rounded-lg object-cover lg:h-[500px] lg:w-[500px] md:h-[450px] md:w-[350px] sm:h-auto sm:w-auto "
           src={look.image}
           alt="Look image"
         />
       </Link>
       {/* Overlay */}
-      <div className="absolute inset-0 flex items-end justify-center pb-3">
+      <div className="absolute inset-0 flex items-end justify-center ">
         <div className="flex items-center justify-between  px-6 py-2 rounded text-white w-11/12">
           <span className="flex items-center space-x-1">
             <IoHeartSharp className="w-5 h-5" />
-            <span>{look.likes}</span>
+            <span>{look.likesCount}</span>
           </span>
           <span className="flex items-center space-x-1">
           <IoPlaySharp className="w-5 h-5" />
-            <span>{look.views}</span>
+            <span>{look.wardrobeCount}</span>
           </span>
           <span className="flex items-center space-x-1">
             <FaComment  className="w-5 h-5" />
-            <span>{look.comments}</span>
+            <span>{look.commentsCount}</span>
           </span>
         </div>
       </div>
@@ -47,3 +44,4 @@ export default function lookCard({ look }: Props) {
     
   );
 }
+export default LookCard

@@ -10,7 +10,7 @@ type Props = {
 export default function ChatListTile({ chat }: Props) {
   return (
 
-    <div className="">
+    <div className="my-4">
     <div className="  flex  p-4 ">
       {/* Profile Image */}
       <div className="h-16 w-16 rounded-full overflow-hidden flex-shrink-0">

@@ -13,9 +13,9 @@ export default function AlertListTile({ alert }: Props) {
     <div className="">
     <div className="  flex  p-4 ">
       {/* Profile Image */}
-      <div className="h-16 w-16  rounded-full overflow-hidden flex-shrink-0">
+      <div className="h-16 w-16 bg-[#514D56]  rounded-full overflow-hidden flex-shrink-0">
         <img
-          className="h-full w-full bg-[#514D56] object-cover"
+          className="  w-full h-full object-cover"
           src={alert.imageUrl}
           alt="Profile"
         />
