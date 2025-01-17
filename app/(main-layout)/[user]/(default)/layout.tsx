@@ -1,29 +1,36 @@
 import { MainLayoutResponsiveWrapper } from "@/components/mainLayout";
 import { TabButton } from "@/components/ui";
-import { MyProfileView, UserProfileTabs } from "@/components/user";
+import {
+  UserProfileTabs,
+  UserProfileView
+} from "@/components/user";
+import { AppLayoutProps } from "@/types";
 import { __paths } from "@/utils";
-import { AiFillPlusCircle } from "react-icons/ai";
+import { notFound } from "next/navigation";
 import { BsPlusCircleFill } from "react-icons/bs";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+  children,
+  params: _params,
+}: AppLayoutProps<{ user: string }>) {
+  let params;
+  if (_params) params = await _params;
+  if (!params?.user) notFound();
+  const userName = decodeURIComponent(params?.user);
+  console.log({ userName });
+  if (!userName.startsWith("@")) notFound();
+
+  // TODO: get user from db
+
   return (
     <div>
       <div className="bg-white max-md:rounded-b-xl shadow-md app-container pt-8">
-        <MyProfileView />
+        <UserProfileView />
       </div>
       <div className="app-container">
         <MainLayoutResponsiveWrapper className="flex flex-col gap-6">
           <div className="flex justify-center md:justify-between mt-4">
-            <UserProfileTabs />
-            <div className="w-fit max-md:hidden">
-            <TabButton
-              href={__paths.newLook}
-              icon={<BsPlusCircleFill />}
-              label="New Look"
-              active
-              className="flex-row-reverse"
-            />
-            </div>
+            <UserProfileTabs prefix={userName} />
           </div>
           {children}
         </MainLayoutResponsiveWrapper>

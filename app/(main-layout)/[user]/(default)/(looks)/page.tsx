@@ -8,7 +8,6 @@
 
 import LookCard from "@/components/looks/LookCard";
 import { dummyLooks } from "@/types/looks";
-import NewLookMobileButton from "./NewLookMobileButton";
 
 export default function Page() {
   return (
@@ -18,7 +17,6 @@ export default function Page() {
           <LookCard key={look._id} look={look} />
         ))}
       </div>
-      <NewLookMobileButton />
     </>
   );
 }

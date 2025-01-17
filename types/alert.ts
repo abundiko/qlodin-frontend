@@ -8,7 +8,7 @@ export interface AlertType {
   }
 
   
-  export const dummyAlerts = [
+  export const dummyAlerts: AlertType[] = [
     {
       id: "1",
       name: "Alert/discount deal ",
@@ -25,5 +25,4 @@ export interface AlertType {
       time: "12:45",
      
     },
-  ,
   ];

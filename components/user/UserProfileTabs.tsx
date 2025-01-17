@@ -3,14 +3,14 @@
 import { __paths } from "@/utils";
 import { AppIcons } from "../icons/AppIcons";
 import TabButton, { TabButtonProps } from "../ui/TabButton";
-import { useState } from "react";
 
 export default function UserProfileTabs({
   prefix = __paths.user,
 }: {
   prefix?: string;
 }) {
-  const [tabs] = useState<TabButtonProps[]>(() => [
+
+  const tabs: TabButtonProps[] = [
     {
       href: __paths.userLooks(prefix),
       icon: <AppIcons.looks />,
@@ -29,7 +29,7 @@ export default function UserProfileTabs({
       label: "Catalogue",
       active: "exact-href",
     },
-  ]);
+  ];
 
   return (
     <div className="flex gap-2 md:gap-4 items-center">
