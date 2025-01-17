@@ -4,7 +4,11 @@
 // create component: @components/alert/AlertListTile with prop {alert:AlertType}
 // map the dummyAlerts and render AlertListTile
 
+import AlertListTile from "../alert/AlertListTile";
 import { AppIcons } from "../icons/AppIcons";
+import { dummyAlerts } from "@/types/alert"
+
+
 
 export default function AlertsSidebar() {
   return (
@@ -13,9 +17,13 @@ export default function AlertsSidebar() {
         <h4 className="font-semibold font-playfair text-2xl">Alerts</h4>
         <AppIcons.alerts />
       </div>
-      <div className="flex-grow h-auto overflow-y-auto bg-red-800">
-        @emma work on this
-        <div className="h-[500px]"></div>
+      <div className=" ">
+        <div className="">
+                {dummyAlerts.map((alert) => (
+                  <AlertListTile key={alert.id} alert={alert} />
+                ))}
+              </div>
+        
       </div>
     </div>
   );

@@ -4,10 +4,23 @@
 // create component: @components/chat/ChatListTile with prop {chat:ChatType}
 // map the dummyChats and render ChatListTile
 
+import ChatListTile from "@/components/chat/ChatListTile";
+import { dummyChats } from "@/types/chat";
+
+
+
+
+
+
 export default function MessageSidebar() {
   return (
-    <div className="overflow-y-auto flex-shrink-0 h-[50%] pb-4">
-      <div className="h-[500px] bg-blue-300">@emma work on this</div>
+    <div className="">
+      <div className="">
+        {dummyChats.map((chat) => (
+          <ChatListTile key={chat.id} chat={chat} />
+        ))}
+      </div>
     </div>
   );
 }
+
