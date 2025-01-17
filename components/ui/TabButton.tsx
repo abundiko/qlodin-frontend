@@ -16,6 +16,7 @@ export default function TabButton({
   icon,
   label,
   className,
+  href,
   ...props
 }: TabButtonProps & HTMLAttributes<HTMLAnchorElement>) {
   const pathname = usePathname();
@@ -23,13 +24,16 @@ export default function TabButton({
     typeof active === "boolean"
       ? active
       : active === "exact-href"
-      ? pathname === props.href
+      ? pathname === href
       : active === "starts-with-href"
-      ? pathname.startsWith(props.href as string)
+      ? pathname.startsWith(href as string)
       : false;
+      
+      
   return (
     <Link
       {...props}
+      href={href}
       title={label}
       className={cn(
         `btn-neutral-2 !rounded-[24px] px-2 md:px-3 !py-1.5 text-xs md:text-sm gap-1 md:gap-1.5 ${

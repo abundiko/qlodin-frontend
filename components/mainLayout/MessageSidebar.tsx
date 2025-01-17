@@ -7,15 +7,10 @@
 import ChatListTile from "@/components/chat/ChatListTile";
 import { dummyChats } from "@/types/chat";
 
-
-
-
-
-
 export default function MessageSidebar() {
   return (
-    <div className="">
-      <div className="">
+    <div className="h-[50%] pb-2 flex-shrink-0 flex flex-col justify-stretch">
+      <div className="flex-grow overflow-y-auto">
         {dummyChats.map((chat) => (
           <ChatListTile key={chat.id} chat={chat} />
         ))}

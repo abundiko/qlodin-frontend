@@ -17,8 +17,8 @@ export default function MainLayoutBottomNavButton({
     <Link
       {...props}
       title={label}
-      className={`flex items-center rounded-xl text-lg md:text-xl p-2 aspect-square gap-3 overflow-hidden hover:bg-neutral-200 ${
-        isActive ? "!bg-figma-primary" : ""
+      className={`flex items-center rounded-xl text-xl md:text-xl p-2 aspect-square gap-3 overflow-hidden hover:bg-neutral-200 ${
+        isActive ? "!bg-figma-primary text-white" : ""
       } `}
     >
       {icon}

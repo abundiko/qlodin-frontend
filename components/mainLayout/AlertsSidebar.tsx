@@ -6,9 +6,7 @@
 
 import AlertListTile from "../alert/AlertListTile";
 import { AppIcons } from "../icons/AppIcons";
-import { dummyAlerts } from "@/types/alert"
-
-
+import { dummyAlerts } from "@/types/alert";
 
 export default function AlertsSidebar() {
   return (
@@ -17,13 +15,10 @@ export default function AlertsSidebar() {
         <h4 className="font-semibold font-playfair text-2xl">Alerts</h4>
         <AppIcons.alerts />
       </div>
-      <div className=" ">
-        <div className="">
-                {dummyAlerts.map((alert) => (
-                  <AlertListTile key={alert.id} alert={alert} />
-                ))}
-              </div>
-        
+      <div className="flex-grow overflow-y-auto">
+        {dummyAlerts.map((alert) => (
+          <AlertListTile key={alert.id} alert={alert} />
+        ))}
       </div>
     </div>
   );

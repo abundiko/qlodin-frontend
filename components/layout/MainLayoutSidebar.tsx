@@ -11,6 +11,7 @@ import { UserAvatar } from "../user";
 import { AnimatePresence } from "framer-motion";
 import { MessageSidebarToggler } from "../mainLayout";
 import { useWindowSize } from "react-use";
+import { FaCircleUser } from "react-icons/fa6";
 
 export default function MainLayoutSidebar() {
   const isExpanded = useGlobalStore((s) => s.mainSidebarOpen);
@@ -22,14 +23,13 @@ export default function MainLayoutSidebar() {
       <AnimatePresence mode="popLayout">
         <aside
           key={"main-layout-aside"}
-          className={`border-r lg:p-4 transition-all duration-300 flex-shrink-0 max-md:hidden 
+          className={`border-r lg:p-4 transition-all duration-300 flex-shrink-0 max-md:hidden sticky top-0 h-screen 
     ${
       isExpanded
         ? "w-[clamp(180px,_30vw,_250px)]"
         : "w-[clamp(100px,_15vw,_140px)]"
     }
   `}
-          onClick={() => setExpanded(!isExpanded)}
         >
           <div className="flex justify-center h-full flex-col gap-4 p-4">
             <div className="flex flex-col items-center justify-center mt-[5vh] mb-[2vh]">
@@ -89,7 +89,7 @@ export const MAIN_LAYOUT_SIDEBAR_BUTTONS: MainLayoutSidebarButtonProps[] = [
   },
   {
     label: "Profile",
-    icon: <AppIcons.user />,
+    icon: <FaCircleUser />,
     href: __paths.user,
   },
 ];

@@ -24,6 +24,7 @@ export default {
           200: "#d9d9d9",
         },
         dark: {
+          50: "#514D56",
           100: "#BCBCBC",
           800: "#1E1E1E",
         },
