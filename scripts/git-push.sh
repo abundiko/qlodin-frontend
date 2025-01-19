@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "setup user dashboard layout"
+git commit -m "added global toast listener"
 
 git push origin dev
