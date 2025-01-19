@@ -57,6 +57,8 @@ export async function signInAction(
     if (!user.firstName || !user.lastName) {
       redirect(__paths.signUpCompleteProfile, RedirectType.replace);
     }
+    // set the toast
+    set(__cookies.alert_toast, JSON.stringify({ message: "Welcome back!", type: "success" }));
     // get the next_path saved in the cookie and delete it later
     const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
     del(__cookies.next_path);

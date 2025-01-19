@@ -43,10 +43,13 @@ export async function googleRegisterCompleteProfileAction(
   debugLog(res);
 
   if (res.status === 201) {
-    const { get, delete: del } = await cookies();
+    const { get, delete: del, set } = await cookies();
     const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
     del(__cookies.next_path);
     del(__cookies.google_register_data);
+    
+    // set the toast
+    set(__cookies.alert_toast, JSON.stringify({ message: "Welcome to Qlodin!", type: "success" }));
     redirect(nextPath, RedirectType.replace);
   } else
     return {

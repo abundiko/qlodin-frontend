@@ -2,7 +2,14 @@
 
 import { formDataToObject } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
-import { __endpoints, __paths, __validators, ApiRequest } from "@/utils";
+import {
+  __cookies,
+  __endpoints,
+  __paths,
+  __validators,
+  ApiRequest,
+} from "@/utils";
+import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
 
@@ -46,8 +53,18 @@ export async function forgotpasswordActions(
     );
     if (error || !res) return { error: "Connection failed" };
 
-    if (res.status === 200) redirect(__paths.user, RedirectType.replace);
-    else
+    if (res.status === 200) {
+      const { token } = res.data;
+      const { set } = await cookies();
+      set(__cookies.user_token, token);
+
+      // set the toast
+      set(
+        __cookies.alert_toast,
+        JSON.stringify({ message: "Welcome back!", type: "success" })
+      );
+      redirect(__paths.user, RedirectType.replace);
+    } else
       return {
         error: res.message ?? "Something went wrong, please try again",
       };
@@ -77,9 +94,8 @@ export async function forgotpasswordActions(
       __endpoints.user.auth.forgotPassword,
       data
     );
-    console.log({res, error});
-    
-    
+    console.log({ res, error });
+
     if (error || !res) return { error: "Connection failed" };
 
     if (res.status === 200)
