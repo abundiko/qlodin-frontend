@@ -81,7 +81,7 @@ export const useGoogleAuth = (): GoogleAuthHook => {
       }
     }
 
-    listenForAuth();
+    // listenForAuth();
   }, []);
 
   const startAuth = async (): Promise<void> => {
@@ -92,11 +92,11 @@ export const useGoogleAuth = (): GoogleAuthHook => {
       setLoading(true);
 
       // Initiate Google Sign-In
-      await signInWithRedirect(auth, provider);
-      const result = await getRedirectResult(auth);
-      // const result = await signInWithPopup(auth, provider);
+      // await signInWithRedirect(auth, provider);
+      // const result = await getRedirectResult(auth);
+      const result = await signInWithPopup(auth, provider);
       if (!result) {
-        toast.error("Google authentication error 1");
+        toast.error("Google authentication error");
         return;
       }
 

@@ -26,7 +26,7 @@ export default function MainLayoutSidebarButton({
     <Link
       {...props}
       title={label}
-      className={`flex items-center text-lg md:text-xl py-2 gap-3 overflow-hidden hover:bg-neutral-200 ${
+      className={`flex items-center text-base md:text-lg py-1.5 gap-3 overflow-hidden hover:bg-neutral-200 ${
         isActive ? "!bg-figma-primary" : ""
       } ${
         !isExpanded ? "aspect-square justify-center w-12 px-2 mx-auto" : "px-4"

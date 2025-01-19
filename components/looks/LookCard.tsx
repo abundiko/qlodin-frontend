@@ -1,8 +1,9 @@
 import { LooksTypePopulated } from "@/types/looks";
 import Link from "next/link";
 import { FaComment } from "react-icons/fa6";
-import { IoHeartSharp } from "react-icons/io5";
+import { IoChatbubble, IoHeartSharp } from "react-icons/io5";
 import { TbHanger2Filled } from "react-icons/tb";
+import { AppIcons } from "../icons/AppIcons";
 
 type LookCardProps = {
   look: LooksTypePopulated;
@@ -27,11 +28,11 @@ function LookCard({ look }: LookCardProps) {
             <span>{look.likesCount}</span>
           </span>
           <span className="flex items-center space-x-1 text-sm md:text-base">
-            <TbHanger2Filled className="" />
+            <AppIcons.wardrobeSm />
             <span>{look.wardrobeCount}</span>
           </span>
           <span className="flex items-center space-x-1 text-sm md:text-base">
-            <FaComment className="" />
+            <IoChatbubble className="" />
             <span>{look.commentsCount}</span>
           </span>
         </div>

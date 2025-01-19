@@ -22,7 +22,7 @@ export default function UserProfileBadge({ src }: { src: string }) {
       </div>
       <img
         src={src}
-        className="w-[52%] aspect-square object-contain avatar absolute top-1/2 -translate-y-1/2 left-[3%]"
+        className="w-[52%] aspect-square object-cover avatar absolute top-1/2 -translate-y-1/2 left-[3%]"
       />
     </div>
   );

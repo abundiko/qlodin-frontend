@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        quicksand: ["var(--font-quicksand)"],
-        playfair: ["var(--font-playfair)"],
-        inter: ["var(--font-inter)"],
+        quicksand: ["var(--font-quicksand)", "sans-serif"],
+        playfair: ["var(--font-playfair)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       colors: {
         figma: {
