@@ -39,7 +39,7 @@ export default function MessageSidebarToggler() {
           }`}
         >
           {!isExpanded && <BsChevronLeft />}
-          <AppIcons.message />
+          <AppIcons.message className="text-2xl" />
         </button>
       </div>
       {isExpanded && (

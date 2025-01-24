@@ -1,8 +1,11 @@
+import { HTMLAttributes } from "react";
+
 export const AppIcons = {
-  home: () => (
+  home: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="25"
-      height="24"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -13,10 +16,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  explore: () => (
+  explore: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="25"
-      height="24"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -33,10 +37,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  wardrobe: () => (
+  wardrobe: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="25"
-      height="24"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -50,10 +55,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  community: () => (
+  community: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="25"
-      height="24"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -72,10 +78,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  message: () => (
+  message: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="32"
-      height="33"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 32 33"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -95,10 +102,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  user: () => (
+  user: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="24"
-      height="24"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -111,10 +119,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  settings: () => (
+  settings: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="30"
-      height="34"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 30 34"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -129,10 +138,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  looks: () => (
+  looks: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="14"
-      height="14"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -151,10 +161,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  collections: () => (
+  collections: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="14"
-      height="14"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -167,10 +178,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  catalogue: () => (
+  catalogue: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="14"
-      height="14"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -185,10 +197,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  alerts: () => (
+  alerts: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="24"
-      height="27"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 24 27"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -202,10 +215,11 @@ export const AppIcons = {
       />
     </svg>
   ),
-  ellipsis: () => (
+  ellipsis: (props: HTMLAttributes<SVGElement>) => (
     <svg
-      width="36"
-      height="26"
+      {...props}
+      width="1em"
+      height="1em"
       viewBox="0 0 36 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -217,8 +231,9 @@ export const AppIcons = {
       />
     </svg>
   ),
-  wardrobeSm: () => (
+  wardrobeSm: (props: HTMLAttributes<SVGElement>) => (
     <svg
+      {...props}
       width="1em"
       height="1em"
       viewBox="0 0 17 17"

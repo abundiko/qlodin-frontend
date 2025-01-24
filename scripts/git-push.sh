@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added global toast listener"
+git commit -m "modified scale of profile designs"
 
 git push origin dev

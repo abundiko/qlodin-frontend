@@ -1,8 +1,6 @@
 import { LooksTypePopulated } from "@/types/looks";
 import Link from "next/link";
-import { FaComment } from "react-icons/fa6";
 import { IoChatbubble, IoHeartSharp } from "react-icons/io5";
-import { TbHanger2Filled } from "react-icons/tb";
 import { AppIcons } from "../icons/AppIcons";
 
 type LookCardProps = {
@@ -11,7 +9,7 @@ type LookCardProps = {
 
 function LookCard({ look }: LookCardProps) {
   return (
-    <div className="w-full aspect-[122/163] md:aspect-[252/392] border border-gray-200 rounded-lg overflow-hidden shadow dark:bg-gray-800 dark:border-gray-700 relative">
+    <div className="w-full aspect-[122/163] md:aspect-[252/312] border border-gray-200 rounded-lg overflow-hidden shadow dark:bg-gray-800 dark:border-gray-700 relative">
       <img
         className="rounded-lg overflow-hidden object-cover w-full h-full"
         src={look.image}

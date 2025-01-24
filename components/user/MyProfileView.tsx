@@ -8,7 +8,7 @@ export default function MyProfileView() {
     <MainLayoutResponsiveWrapper className="py-6 md:p-10 flex gap-4 md:gap-8">
       <div className="w-7/12 flex flex-col gap-4 flex-shrink-0 justify-center">
         <div className="flex justify-between flex-wrap gap-x-6 max-md:hidden">
-          <h2 className="line-clamp-1 font-semibold md:text-2xl">
+          <h2 className="line-clamp-1 font-semibold md:text-lg">
             Awolowo Samuel
           </h2>
           <p className="line-clamp-1 font-medium text-sm md:text-base text-neutral-600">
@@ -16,24 +16,24 @@ export default function MyProfileView() {
           </p>
         </div>
         <div className="flex justify-between gap-4 h-fit">
-          <p className="text-sm md:text-lg inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-2 text-center">
+          <p className="text-sm md:text-base inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-1 text-center">
             <span className="font-semibold">30</span>
             <span>Looks</span>
           </p>
-          <p className="text-sm md:text-lg inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-2 text-center">
+          <p className="text-sm md:text-base inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-1 text-center">
             <span className="font-semibold">30</span>
             <span>Followers</span>
           </p>
-          <p className="text-sm md:text-lg inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-2 text-center">
+          <p className="text-sm md:text-base inline-flex max-lg:flex-col h-fit max-lg:justify-center lg:gap-1 text-center">
             <span className="font-semibold">30</span>
             <span>Following</span>
           </p>
         </div>
-        <div className="flex gap-2 md:gap-4">
+        <div className="flex gap-2">
           <button className={cn("btn-black max-h-10", "!py-1")}>
             Edit Profile
           </button>
-          <button className="max-md:hidden">
+          <button className="max-md:hidden text-xl btn-icon">
             <AppIcons.settings />
           </button>
         </div>
@@ -45,7 +45,7 @@ export default function MyProfileView() {
       <div className="w-5/12 flex-shrink-0 flex flex-col justify-center overflow-hidden">
         <div className="flex justify-end scale-[.8]">
           <button className="md:hidden">
-            <AppIcons.settings />
+            <AppIcons.settings className="text-2xl" />
           </button>
         </div>
         <UserProfileBadge src="/images/person.png" />

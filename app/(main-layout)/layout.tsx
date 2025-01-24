@@ -6,6 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <MainLayoutSidebar />
       <section className={`bg-light-100 flex-shrink flex-grow overflow-y-auto`}>
         {children}
+        <div className="h-40"></div>
       </section>
       <MainLayoutBottomNav />
     </section>

@@ -33,8 +33,8 @@ export default function MainLayoutSidebar() {
         >
           <div className="flex justify-center h-full flex-col gap-4 p-4">
             <div className="flex flex-col items-center justify-center mt-[5vh] mb-[2vh]">
-              <AppLogo size={42} />
-              <h1 className="text-[#1E1E1E] text-xl md:text-3xl font-medium font-playfair">
+              <AppLogo size={38} />
+              <h1 className="text-[#1E1E1E] text-xl md:text-2xl font-medium font-playfair">
                 Qlodin.
               </h1>
             </div>
@@ -51,8 +51,8 @@ export default function MainLayoutSidebar() {
                 icon={
                   <UserAvatar
                     src="/images/person.png"
-                    height={44}
-                    width={44}
+                    height={30}
+                    width={30}
                     className="overflow-hidden border-white"
                     fallbackLabel="A"
                   />

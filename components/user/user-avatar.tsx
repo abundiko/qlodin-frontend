@@ -6,7 +6,12 @@ export function UserAvatar({
   ...props
 }: AvatarImageProps & { fallbackLabel?: string }) {
   return (
-    <Avatar>
+    <Avatar
+      style={{
+        height: props.height ?? 24,
+        width: props.width ?? 24,
+      }}
+    >
       <AvatarImage {...props} />
       {fallbackLabel && (
         <AvatarFallback>{fallbackLabel.charAt(0) ?? "?"}</AvatarFallback>

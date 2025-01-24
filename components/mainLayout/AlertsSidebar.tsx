@@ -13,7 +13,7 @@ export default function AlertsSidebar() {
     <div className="h-[50%] flex-shrink-0 flex flex-col justify-stretch">
       <div className={`flex justify-between`}>
         <h4 className="font-semibold font-playfair text-2xl">Alerts</h4>
-        <AppIcons.alerts />
+        <AppIcons.alerts className="text-2xl" />
       </div>
       <div className="flex-grow overflow-y-auto">
         {dummyAlerts.map((alert) => (
