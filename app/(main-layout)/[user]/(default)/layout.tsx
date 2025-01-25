@@ -1,13 +1,10 @@
 import { MainLayoutResponsiveWrapper } from "@/components/mainLayout";
-import { TabButton } from "@/components/ui";
 import {
   UserProfileTabs,
   UserProfileView
 } from "@/components/user";
 import { AppLayoutProps } from "@/types";
-import { __paths } from "@/utils";
 import { notFound } from "next/navigation";
-import { BsPlusCircleFill } from "react-icons/bs";
 
 export default async function Layout({
   children,

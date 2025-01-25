@@ -13,7 +13,7 @@ import NewLookMobileButton from "./NewLookMobileButton";
 export default function Page() {
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2 mb-6">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-1 md:gap-2 mb-6">
         {dummyLooks.map((look) => (
           <LookCard key={look._id} look={look} />
         ))}

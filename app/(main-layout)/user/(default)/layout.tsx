@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className="app-container">
         <MainLayoutResponsiveWrapper className="flex flex-col gap-6">
-          <div className="flex justify-center md:justify-between mt-4">
+          <div className="flex justify-center md:justify-between mt-4 lg:mx-12">
             <UserProfileTabs />
             <div className="w-fit max-md:hidden">
             <TabButton

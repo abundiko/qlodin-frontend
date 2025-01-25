@@ -6,7 +6,7 @@ import UserProfileBadge from "./UserProfileBadge";
 export default function UserProfileView() {
   return (
     <MainLayoutResponsiveWrapper className="py-6 md:p-10 flex gap-4 md:gap-8">
-      <div className="w-7/12 flex flex-col gap-4 flex-shrink-0 justify-center">
+      <div className="w-7/12 lg:w-8/12 flex flex-col gap-4 flex-shrink-0 justify-center">
         <div className="flex justify-between flex-wrap gap-x-6 max-md:hidden">
         <h2 className="line-clamp-1 font-semibold md:text-lg">
             Awolowo Samuel
@@ -38,7 +38,7 @@ export default function UserProfileView() {
               Message
             </button>
           </div>
-          <button className="max-md:hidden flex-shrink-0 text-xl btn-icon">
+          <button className="max-md:hidden flex-shrink-0 text-3xl">
             <AppIcons.ellipsis />
           </button>
         </div>
@@ -47,10 +47,10 @@ export default function UserProfileView() {
           quaerat repudiandae cum qui optio aperiam id ut sunt quo?
         </p>
       </div>
-      <div className="w-5/12 flex-shrink-0 flex flex-col justify-center overflow-hidden">
+      <div className="w-5/12 lg:w-4/12 flex-shrink-0 flex flex-col justify-center overflow-hidden">
         <div className="flex justify-end scale-[.8]">
           <button className="md:hidden">
-            <AppIcons.ellipsis className="text-2xl" />
+            <AppIcons.ellipsis className="text-3xl" />
           </button>
         </div>
         <UserProfileBadge src="/images/person.png" />

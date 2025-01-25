@@ -7,6 +7,7 @@ import MessageSidebar from "./MessageSidebar";
 import AlertsSidebar from "./AlertsSidebar";
 import { useClickAway } from "react-use";
 import { useRef } from "react";
+import { DelayRender } from "../hoc";
 
 export default function MessageSidebarToggler() {
   const isExpanded = useGlobalStore((s) => !s.mainSidebarOpen);
@@ -19,8 +20,12 @@ export default function MessageSidebarToggler() {
   return (
     <div
       ref={ref}
-      className={`rounded-l-3xl flex flex-col justify-stretch shadow-xl fixed z-30 right-0 transition-all duration-500 top-1/2 -translate-y-1/2 bg-white 
-    ${isExpanded ? "w-[370px] h-[80vh] p-6" : "w-16 h-16 aspect-square"}
+      className={` flex flex-col justify-stretch fixed z-30 right-0 transition-all duration-500 top-1/2 -translate-y-1/2 bg-white 
+    ${
+      isExpanded
+        ? "w-[370px] h-[80vh] p-6 rounded-l-3xl shadow-[-8px_4px_16px_#0000001A]"
+        : "w-16 h-16 aspect-square rounded-l-xl shadow-[0_4px_4px_#0000001A]"
+    }
     `}
     >
       <div
@@ -43,10 +48,12 @@ export default function MessageSidebarToggler() {
         </button>
       </div>
       {isExpanded && (
-        <div className="flex flex-col flex-grow justify-stretch h-[calc(80vh-48px-36px)]">
-          <MessageSidebar />
-          <AlertsSidebar />
-        </div>
+        <DelayRender milliseconds={500}>
+          <div className="flex flex-col flex-grow justify-stretch h-[calc(80vh-48px-36px)]">
+            <MessageSidebar />
+            <AlertsSidebar />
+          </div>
+        </DelayRender>
       )}
     </div>
   );

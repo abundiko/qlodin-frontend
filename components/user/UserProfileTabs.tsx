@@ -9,7 +9,6 @@ export default function UserProfileTabs({
 }: {
   prefix?: string;
 }) {
-
   const tabs: TabButtonProps[] = [
     {
       href: __paths.userLooks(prefix),
@@ -34,7 +33,7 @@ export default function UserProfileTabs({
   return (
     <div className="flex gap-2 md:gap-4 items-center">
       {tabs.map((tab, i) => (
-        <TabButton key={i} {...tab} />
+        <TabButton key={i} {...tab} className="flex-row-reverse" />
       ))}
     </div>
   );

@@ -18,18 +18,18 @@ function LookCard({ look }: LookCardProps) {
       {/* Overlay */}
       <Link
         href={"#"}
-        className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/80 to-transparent hover:from-transparent transition-all duration-300"
+        className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 to-transparent hover:from-transparent transition-all duration-300"
       >
-        <div className="flex items-center justify-center gap-3 md:gap-6 p-1 rounded text-white w-11/12">
-          <span className="flex items-center space-x-1 text-sm md:text-base">
+        <div className="flex items-center justify-center gap-1 sm:gap-3 md:gap-6 p-1 rounded text-white w-11/12">
+          <span className="flex items-center space-x-1 text-xs md:text-base">
             <IoHeartSharp className="" />
             <span>{look.likesCount}</span>
           </span>
-          <span className="flex items-center space-x-1 text-sm md:text-base">
+          <span className="flex items-center space-x-1 text-xs md:text-base">
             <AppIcons.wardrobeSm />
             <span>{look.wardrobeCount}</span>
           </span>
-          <span className="flex items-center space-x-1 text-sm md:text-base">
+          <span className="flex items-center space-x-1 text-xs md:text-base">
             <IoChatbubble className="" />
             <span>{look.commentsCount}</span>
           </span>

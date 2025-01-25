@@ -83,6 +83,10 @@ body {
     @apply bg-light-100 w-full text-sm border border-light-100 outline-primary text-neutral-800 placeholder:text-neutral-600 py-2 pe-4 rounded-lg read-only:opacity-70 read-only:[&not[type="file"]]:pointer-events-none;
   }
 
+  .app-input-white-bordered{
+    @apply app-input !rounded-lg !bg-white !border-[#00000080]
+  }
+
   .app-select {
     @apply w-full border-transparent outline-primary text-neutral-800 py-3 px-3 rounded-md bg-neutral-100;
   }
@@ -102,6 +106,9 @@ body {
   .btn-black {
     @apply btn w-full py-2.5 bg-dark-800 hover:bg-dark-800/80 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
   }
+  .btn-black-border {
+    @apply btn w-full py-2.5 border border-dark-800 hover:bg-gray-100/80 disabled:bg-dark-100 text-dark-800 outline-primary;
+  }
   .btn-dark-50 {
     @apply btn w-full py-2.5 bg-dark-50 hover:bg-neutral-800 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
   }
@@ -112,7 +119,10 @@ body {
     @apply btn w-full py-2.5 bg-[#9882AC33] border border-[#9882AC33] hover:bg-transparent disabled:bg-dark-100  font-semibold rounded-lg outline-primary;
   }
   .btn-form {
-    @apply btn w-full !py-2.5 bg-dark-800 hover:bg-dark-800/80 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
+    @apply btn w-full py-2.5 bg-dark-800 hover:bg-dark-800/80 disabled:bg-dark-100 text-white font-bold rounded-lg shadow-lg outline-primary;
+  }
+  .btn-link{
+    @apply hover:underline
   }
 
   .btn-social-auth {
@@ -121,7 +131,7 @@ body {
 }
 
 .avatar {
-  @apply rounded-full bg-dark-100;
+  @apply rounded-full bg-gray-300;
 }
 
 .hide-scrollbar {

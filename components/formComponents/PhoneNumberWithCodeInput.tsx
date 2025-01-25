@@ -1,3 +1,5 @@
+'use client'
+
 import { countries } from "country-codes-flags-phone-codes";
 import { HTMLAttributes, useEffect, useState } from "react";
 import AppSelect from "./AppSelect";

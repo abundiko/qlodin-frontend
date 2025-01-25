@@ -15,7 +15,6 @@ import { FaCircleUser } from "react-icons/fa6";
 
 export default function MainLayoutSidebar() {
   const isExpanded = useGlobalStore((s) => s.mainSidebarOpen);
-  const setExpanded = useGlobalStore((s) => s.setMainSidebarOpen);
   const { width: vw } = useWindowSize();
 
   if (vw >= 768)
@@ -23,41 +22,44 @@ export default function MainLayoutSidebar() {
       <AnimatePresence mode="popLayout">
         <aside
           key={"main-layout-aside"}
-          className={`border-r lg:p-4 transition-all duration-300 flex-shrink-0 max-md:hidden sticky top-0 h-screen 
+          className={`transition-all duration-300 flex-shrink-0 max-md:hidden h-screen 
     ${
       isExpanded
         ? "w-[clamp(180px,_30vw,_250px)]"
         : "w-[clamp(100px,_15vw,_140px)]"
     }
+     fixed top-0 left-0 z-30
   `}
         >
-          <div className="flex justify-center h-full flex-col gap-4 p-4">
-            <div className="flex flex-col items-center justify-center mt-[5vh] mb-[2vh]">
-              <AppLogo size={38} />
-              <h1 className="text-[#1E1E1E] text-xl md:text-2xl font-medium font-playfair">
-                Qlodin.
-              </h1>
-            </div>
-            <div className="flex flex-col gap-2 flex-shrink flex-grow h-auto">
-              {MAIN_LAYOUT_SIDEBAR_BUTTONS.slice(0, 4).map((btn, i) => (
-                <MainLayoutSidebarButton key={i} {...btn} />
-              ))}
-            </div>
-            <div className="">
-              <MainLayoutSidebarButton
-                label="Profile"
-                circle
-                href={__paths.user}
-                icon={
-                  <UserAvatar
-                    src="/images/person.png"
-                    height={30}
-                    width={30}
-                    className="overflow-hidden border-white"
-                    fallbackLabel="A"
-                  />
-                }
-              />
+          <div className="py-6 h-full">
+            <div className="flex justify-center h-full flex-col gap-4 p-4 bg-white shadow-[8px_4px_16px_#0000001A] rounded-r-3xl">
+              <div className="flex flex-col items-center justify-center my-[5vh]">
+                <AppLogo size={38} />
+                <h1 className="text-[#1E1E1E] text-xl md:text-2xl font-medium font-playfair">
+                  Qlodin.
+                </h1>
+              </div>
+              <div className="flex flex-col gap-2 flex-shrink flex-grow h-auto">
+                {MAIN_LAYOUT_SIDEBAR_BUTTONS.slice(0, 4).map((btn, i) => (
+                  <MainLayoutSidebarButton key={i} {...btn} />
+                ))}
+              </div>
+              <div className="">
+                <MainLayoutSidebarButton
+                  label="Profile"
+                  circle
+                  href={__paths.user}
+                  icon={
+                    <UserAvatar
+                      src="/images/person.png"
+                      height={30}
+                      width={30}
+                      className="overflow-hidden border-white"
+                      fallbackLabel="A"
+                    />
+                  }
+                />
+              </div>
             </div>
           </div>
         </aside>

@@ -20,6 +20,7 @@ export type AppInputProps = {
   error?: string[];
   onChange?: (value: string) => void;
   inputProps?: HTMLAttributes<HTMLInputElement> & any;
+  variant?: "app-input" | "app-input-white-bordered";
 };
 
 export default memo(function AppInput({
@@ -38,6 +39,7 @@ export default memo(function AppInput({
   error,
   inputProps,
   rightComponent,
+  variant = "app-input"
 }: AppInputProps) {
   const [val, setVal] = useState(value);
   const [eyeOpen, setEyeOpen] = useState(false);
@@ -94,7 +96,7 @@ export default memo(function AppInput({
               setVal(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
-            className={`app-input ${!icon ? "ps-3" : "ps-9"} ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
+            className={`${variant} ${!icon ? "ps-3" : "ps-9"} ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
               fieldError ? "!bg-red-100" : ""
             }`}
           />
@@ -112,7 +114,7 @@ export default memo(function AppInput({
               setVal(e.target.value);
               if (onChange) onChange(e.target.value);
             }}
-            className={`app-input ${ps ? ps : !icon ? "ps-4" : "ps-9"}  ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
+            className={`${variant} ${ps ? ps : !icon ? "ps-4" : "ps-9"}  ${!(!!rightComponent || type === "password") ? "pe-3" : "!pe-9"}  ${
               fieldError && fieldError.length > 0 ? "!bg-red-100" : ""
             }`}
           />
