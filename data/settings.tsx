@@ -25,6 +25,11 @@ const accountSettings: SettingItem[] = [
     link: __paths.userSettingsProfile,
   },
   {
+    title: "Change Username",
+    icon: <FaUser />,
+    link: __paths.userSettingsProfile,
+  },
+  {
     title: "Account Information",
     icon: <IoMdInformationCircle />,
     link: __paths.userSettingsProfile,
