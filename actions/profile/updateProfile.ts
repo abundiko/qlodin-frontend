@@ -3,7 +3,9 @@
 import { debugLog } from "@/functions/debug";
 import { formDataToObject, removeEmptyFields } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
-import { __endpoints, __validators, ApiRequest } from "@/utils";
+import { __endpoints, __paths, __validators } from "@/utils";
+import { AuthRequest } from "@/utils/authRequest";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const schema = z.object({
@@ -29,7 +31,7 @@ export async function updateProfileAction(
       fieldErrors: tryParse.error.flatten().fieldErrors,
     };
 
-  const [res, error] = await ApiRequest.post<ApiResponse>(
+  const [res, error] = await AuthRequest.post<ApiResponse>(
     __endpoints.user.account.updateProfile,
     data
   );
@@ -38,6 +40,7 @@ export async function updateProfileAction(
   debugLog(res);
 
   if (res.status === 200) {
+    revalidatePath(__paths.user);
     return {
       success: "Profile updated successfully",
       data: {

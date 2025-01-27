@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "added getUserProfile and global state for user account data"
+git commit -m "working on edit email screen and api impl"
 
 git push origin dev

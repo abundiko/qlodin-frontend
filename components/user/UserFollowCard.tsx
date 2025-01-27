@@ -18,7 +18,7 @@ export default function UserFollowCard({ user }: UserFollowCardProps) {
         <UserAvatar
           className="rounded-full size-14 object-cover avatar"
           fallbackLabel={user.userName}
-          src={user.image}
+          src={user.profilePicture}
           alt={user.userName}
           height={46}
           width={46}

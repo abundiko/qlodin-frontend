@@ -17,3 +17,5 @@ export { signUpVerifyEmailResendCodeAction } from "./auth/signUpVerifyEmailResen
 export { getUserProfileAction } from "./profile/getUserProfile";
 export { updateUsernameAction } from "./profile/updateUsername";
 export { updateProfileAction } from "./profile/updateProfile";
+export { updateProfilePhotoAction } from "./profile/updateProfilePhoto";
+export { updatePasswordAction } from "./profile/updatePassword";

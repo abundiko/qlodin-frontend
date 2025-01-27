@@ -8,16 +8,22 @@ import {
   FormMessage,
   InputStatusCheckerIcon,
 } from "@/components/formComponents";
-import { useAppActionState, useUsernameChecker } from "@/hooks";
+import {
+  useAppActionState,
+  useEmailChecker,
+  useUsernameChecker,
+} from "@/hooks";
 import { useUserStore } from "@/stores";
+import { BiEnvelope } from "react-icons/bi";
 import { CiAt } from "react-icons/ci";
+import { FaRegEnvelope } from "react-icons/fa6";
 import { useEffectOnce } from "react-use";
 
 export default function EditDriptagForm() {
   const { user, setUser } = useUserStore();
-  const { status, username, setUsername, usernameError } = useUsernameChecker();
+  const { status, email, setEmail, emailError } = useEmailChecker();
   useEffectOnce(() => {
-    setUsername(user?.userName ?? "");
+    setEmail(user?.userName ?? "");
   });
   const { action, state, submitting } = useAppActionState(
     updateUsernameAction,
@@ -37,15 +43,15 @@ export default function EditDriptagForm() {
           key={field.name}
           {...field}
           error={(() => {
-            const stateError = [usernameError].filter(
+            const stateError = [emailError].filter(
               (i) => typeof i === "string"
             );
             return stateError.length > 0
               ? stateError
               : state?.fieldErrors?.["userName"];
           })()}
-          onChange={setUsername}
-          value={username}
+          onChange={setEmail}
+          value={email}
           rightComponent={<InputStatusCheckerIcon status={status} />}
         />
       ))}
@@ -62,9 +68,9 @@ export default function EditDriptagForm() {
 
 const formFields: AppInputProps[] = [
   {
-    name: "userName",
-    placeholder: "enter your username",
-    title: "Driptag",
-    icon: <CiAt />,
+    name: "email",
+    placeholder: "enter your email",
+    title: "Email address",
+    icon: <FaRegEnvelope />,
   },
 ];

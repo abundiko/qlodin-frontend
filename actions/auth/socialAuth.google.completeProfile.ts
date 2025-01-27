@@ -3,8 +3,13 @@
 import { debugLog } from "@/functions/debug";
 import { formDataToObject } from "@/functions/helpers";
 import { ActionResponse, ApiResponse } from "@/types";
-import { __cookies, __endpoints, __paths, __validators } from "@/utils";
-import { AuthRequest } from "@/utils/authRequest";
+import {
+  __cookies,
+  __endpoints,
+  __paths,
+  __validators,
+  ApiRequest,
+} from "@/utils";
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
@@ -34,10 +39,11 @@ export async function googleRegisterCompleteProfileAction(
       fieldErrors: tryParse.error.flatten().fieldErrors,
     };
 
-  const [res, error] = await AuthRequest.post<ApiResponse>(
+  const [res, error] = await ApiRequest.post<ApiResponse>(
     __endpoints.user.auth.googleRegister,
     data
   );
+  debugLog({ res, error});
   if (error || !res) return { error: "Connection failed" };
 
   debugLog(res);
@@ -47,9 +53,12 @@ export async function googleRegisterCompleteProfileAction(
     const nextPath = get(__cookies.next_path)?.value ?? __paths.user;
     del(__cookies.next_path);
     del(__cookies.google_register_data);
-    
+
     // set the toast
-    set(__cookies.alert_toast, JSON.stringify({ message: "Welcome to Qlodin!", type: "success" }));
+    set(
+      __cookies.alert_toast,
+      JSON.stringify({ message: "Welcome to Qlodin!", type: "success" })
+    );
     redirect(nextPath, RedirectType.replace);
   } else
     return {
