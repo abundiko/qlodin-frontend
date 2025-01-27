@@ -67,9 +67,11 @@ export default function MyProfileView() {
         </div>
         <UserProfileBadge src="/images/person.png" />
         <div className="flex flex-col items-center md:hidden">
-          <h2 className="line-clamp-1 font-semibold text-sm">Awolowo Samuel</h2>
+          <h2 className="line-clamp-1 font-semibold text-sm">
+            {fullName(user?.firstName, user?.lastName)}
+          </h2>
           <p className="line-clamp-1 font-medium text-xs md:text-base text-neutral-600">
-            @the_best_001
+            @{user?.userName}
           </p>
         </div>
       </div>
