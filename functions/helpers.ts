@@ -143,6 +143,14 @@ export function getCookie(name: string) {
   return match ? match[2] : null; // Return the value of the cookie or null if not found
 }
 
-export function sleep(seconds: number){
+export function sleep(seconds: number) {
   return new Promise((resolve) => setTimeout(resolve, seconds));
+}
+
+export function removeEmptyFields<T>(data: T): Partial<T> {
+  const newData: Partial<T> = {};
+  for (const key in data) {
+    if (data[key] !== "") newData[key] = data[key];
+  }
+  return newData;
 }

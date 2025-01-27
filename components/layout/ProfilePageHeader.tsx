@@ -19,7 +19,7 @@ export default function ProfilePageHeader({
           <FaCaretLeft />
         </button>
         <h2 className="text-lg md:text-xl font-semibold">{children}</h2>
-        <div className="w-6"></div>
+        <div className="w-9"></div>
       </MainLayoutResponsiveWrapper>
     </header>
   );

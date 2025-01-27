@@ -29,10 +29,17 @@ export const __paths = {
   newLook: "/user/looks/new",
   singleUser: (username: string) => `/@${username}`,
   userLooks: (prefix = "/user") => `/${prefix}`.replace("//", "/"),
-  userCollections: (prefix = "/user") => `/${prefix}/collections`.replace("//", "/"),
-  userCatalogue: (prefix = "/user") => `/${prefix}/catalogue`.replace("//", "/"),
-  userFollowers: (prefix = "/user") => `/${prefix}/followers`.replace("//", "/"),
-  userFollowing: (prefix = "/user") => `/${prefix}/following`.replace("//", "/"),
+  userCollections: (prefix = "/user") =>
+    `/${prefix}/collections`.replace("//", "/"),
+  userCatalogue: (prefix = "/user") =>
+    `/${prefix}/catalogue`.replace("//", "/"),
+  userFollowers: (prefix = "/user") =>
+    `/${prefix}/followers`.replace("//", "/"),
+  userFollowing: (prefix = "/user") =>
+    `/${prefix}/following`.replace("//", "/"),
   userSettings: "/user/settings",
   userSettingsProfile: "/user/settings/profile",
+  userSettingsDriptag: "/user/settings/driptag",
+  userSettingsEmail: "/user/settings/email",
+  userSettingsPassword: "/user/settings/password",
 } as const;

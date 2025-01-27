@@ -1,4 +1,3 @@
-
 const API_HOST = "https://qlodin-backend.onrender.com/api";
 
 export const __endpoints = {
@@ -7,8 +6,9 @@ export const __endpoints = {
       verify: `https://www.google.com/recaptcha/api/siteverify`,
     },
   },
-  cloudflare:{
-    verifyTurnstileCaptcha: "https://challenges.cloudflare.com/turnstile/v0/siteverify"
+  cloudflare: {
+    verifyTurnstileCaptcha:
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
   },
   user: {
     auth: {
@@ -25,6 +25,15 @@ export const __endpoints = {
       forgotPasswordResend: `${API_HOST}/user/auth/resend-reset-code`,
       googleLogin: `${API_HOST}/user/auth/google-login`,
       googleRegister: `${API_HOST}/user/auth/google-register`,
+    },
+    account: {
+      getProfile: `${API_HOST}/user/account/get-user`,
+      updateProfile: `${API_HOST}/user/account/update-profile`,
+      updateUsername: `${API_HOST}/user/account/update-username`,
+      updateEmail: `${API_HOST}/user/account/update-email`,
+      updateEmailVerify: `${API_HOST}/user/account/verify-new-email`,
+      updatePassword: `${API_HOST}/user/account/update-password`,
+      updateProfilePhoto: `${API_HOST}/user/account/upload-profile-picture`,
     },
   },
 } as const;

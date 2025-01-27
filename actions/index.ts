@@ -11,3 +11,8 @@ export { googleLoginAction } from "./auth/socialAuth.google.login";
 export { googleRegisterAction } from "./auth/socialAuth.google.register";
 export { googleRegisterCompleteProfileAction } from "./auth/socialAuth.google.completeProfile";
 export { signUpVerifyEmailResendCodeAction } from "./auth/signUpVerifyEmailResendCode";
+
+// user account and profile
+export { getUserProfileAction } from "./profile/getUserProfile";
+export { updateUsernameAction } from "./profile/updateUsername";
+export { updateProfileAction } from "./profile/updateProfile";

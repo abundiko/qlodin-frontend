@@ -6,6 +6,8 @@ import { FaBell, FaCircleMinus, FaUser } from "react-icons/fa6";
 import { IoMdInformationCircle, IoMdLock } from "react-icons/io";
 import { LuEye } from "react-icons/lu";
 import { BiSolidNotification } from "react-icons/bi";
+import { CgRename } from "react-icons/cg";
+import { MdEmail } from "react-icons/md";
 
 type SettingItem = {
   title: string;
@@ -25,9 +27,14 @@ const accountSettings: SettingItem[] = [
     link: __paths.userSettingsProfile,
   },
   {
-    title: "Change Username",
-    icon: <FaUser />,
-    link: __paths.userSettingsProfile,
+    title: "Change Driptag/Username",
+    icon: <CgRename />,
+    link: __paths.userSettingsDriptag,
+  },
+  {
+    title: "Change Email",
+    icon: <MdEmail />,
+    link: __paths.userSettingsEmail,
   },
   {
     title: "Account Information",
@@ -86,7 +93,7 @@ const securitySettings: SettingItem[] = [
   {
     title: "Password & Login",
     icon: <IoMdLock />,
-    link: __paths.userSettingsProfile,
+    link: __paths.userSettingsPassword,
   },
   {
     title: "Two-factor Authentication",

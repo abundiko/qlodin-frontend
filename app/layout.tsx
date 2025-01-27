@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Quicksand, Playfair, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import { FirebaseWrapper, QueryClientWrapper } from "@/components/hoc";
+import {
+  FirebaseWrapper,
+  QueryClientWrapper,
+  UserAccountFetcher,
+} from "@/components/hoc";
 import { createMetadata } from "@/functions/metadata";
 import { AlertToastListener } from "@/components/layout";
+import { Suspense } from "react";
 
 export const metadata: Metadata = createMetadata({
   title: "Qlodin : Fashion and Social media knit together",
@@ -45,6 +50,9 @@ export default function RootLayout({
               <AlertToastListener />
               <Toaster />
             </main>
+            <Suspense>
+              <UserAccountFetcher />
+            </Suspense>
           </FirebaseWrapper>
         </QueryClientWrapper>
       </body>
