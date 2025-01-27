@@ -1,20 +1,26 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { MainLayoutResponsiveWrapper } from "../mainLayout";
 import { AppIcons } from "../icons/AppIcons";
 import UserProfileBadge from "./UserProfileBadge";
 import Link from "next/link";
 import { __paths } from "@/utils";
+import { useUserStore } from "@/stores";
+import { fullName } from "@/functions/helpers";
 
 export default function MyProfileView() {
+  const user = useUserStore((s) => s.user);
+
   return (
     <MainLayoutResponsiveWrapper className="py-6 md:p-10 flex gap-4 md:gap-8">
       <div className="w-7/12 lg:w-8/12 flex flex-col gap-4 flex-shrink-0 justify-center">
         <div className="flex justify-between flex-wrap gap-x-6 max-md:hidden">
           <h2 className="line-clamp-1 font-semibold md:text-lg">
-            Awolowo Samuel
+            {fullName(user?.firstName, user?.lastName)}
           </h2>
           <p className="line-clamp-1 font-medium text-sm md:text-base text-neutral-600">
-            @the_best_001
+            @{user?.userName}
           </p>
         </div>
         <div className="flex justify-between gap-4 h-fit">
@@ -44,10 +50,7 @@ export default function MyProfileView() {
           <button className={cn("btn-black max-h-10", "!py-1")}>
             Edit Profile
           </button>
-          <Link
-            href={__paths.userSettings}
-            className="max-md:hidden text-3xl"
-          >
+          <Link href={__paths.userSettings} className="max-md:hidden text-3xl">
             <AppIcons.settings />
           </Link>
         </div>

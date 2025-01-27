@@ -113,9 +113,14 @@ export function withAll(
  * @param {...string} names - Any number of string parameters representing name parts.
  * @returns {string} A single string with all name parts capitalized and combined.
  */
-export function fullName(...names: string[]): string {
+export function fullName(...names: (string | undefined)[]): string {
   return names
-    .map((name) => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase())
+    .map((name) =>
+      !name
+        ? ""
+        : name.charAt(0).toUpperCase() +
+          (!name ? "" : name.slice(1).toLowerCase())
+    )
     .join(" ");
 }
 

@@ -1,6 +1,7 @@
 // misc
 export { suggestUsernamesWithAi } from "./misc/suggestUsernamesWithAi";
 export { verifyTurnstileCaptcha } from "./misc/verifyTurnstileCaptcha";
+export { setToastCookie } from "./misc/setToastCookie";
 
 // auth
 export { signInAction } from "./auth/signIn";

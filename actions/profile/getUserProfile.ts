@@ -3,10 +3,8 @@
 import { debugLog } from "@/functions/debug";
 import { ApiResponse, ServiceResponse } from "@/types";
 import { UserType } from "@/types/user";
-import { __cookies, __endpoints, __paths } from "@/utils";
+import { __endpoints } from "@/utils";
 import { AuthRequest } from "@/utils/authRequest";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function getUserProfileAction(): Promise<
   ServiceResponse<UserType, string>
@@ -20,7 +18,7 @@ export async function getUserProfileAction(): Promise<
 
   if (err || !res) return [null, "Connection failed! Please try again"];
 
-  if (res.status === 200) return [res.data, null];
+  if (res.status === 200) return [res.data.user, null];
 
   return [null, res.message];
 }

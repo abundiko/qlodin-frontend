@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "working on edit username screen ui"
+git commit -m "added getUserProfile and global state for user account data"
 
 git push origin dev
