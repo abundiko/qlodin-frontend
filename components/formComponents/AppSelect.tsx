@@ -29,9 +29,10 @@ export default function AppSelect({
   readonly,
   onChange,
   error: fieldError,
-  variant = "app-select",
+  variant: _variant,
   placeholder = "-- select --",
 }: AppSelectProps) {
+  const variant = _variant ?? "app-select"
   return (
     <div>
       {title && (
