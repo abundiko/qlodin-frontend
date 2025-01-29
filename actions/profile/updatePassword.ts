@@ -50,7 +50,7 @@ export async function updatePasswordAction(
   if (res.status === 200) {
     revalidatePath(__paths.user);
     return {
-      success: "Profile updated successfully",
+      success: "Password changed successfully",
     };
   } else
     return {

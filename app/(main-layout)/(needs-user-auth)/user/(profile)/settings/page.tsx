@@ -4,7 +4,7 @@ import SettingsMain from "./Main";
 import { notFound } from "next/navigation";
 
 export default function Page() {
-  notFound();
+  // notFound();
   return (
     <>
       <ProfilePageHeader>Settings</ProfilePageHeader>

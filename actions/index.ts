@@ -19,3 +19,4 @@ export { updateUsernameAction } from "./profile/updateUsername";
 export { updateProfileAction } from "./profile/updateProfile";
 export { updateProfilePhotoAction } from "./profile/updateProfilePhoto";
 export { updatePasswordAction } from "./profile/updatePassword";
+export { updateEmailAction } from "./profile/updateEmail";

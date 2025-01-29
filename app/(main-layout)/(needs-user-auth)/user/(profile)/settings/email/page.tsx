@@ -9,7 +9,7 @@ export default function Page() {
     <>
       <ProfilePageHeader>Change Email</ProfilePageHeader>
       <MainLayoutResponsiveWrapper className="app-container">
-        <div className="mx-auto max-w-[500px] mt-6">
+        <div className="mx-auto max-w-[350px] mt-6">
           <EditDriptagForm />
           <div className="flex flex-col gap-2 mt-6 items-center">
             <Link
