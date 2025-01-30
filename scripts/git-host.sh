@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "modified scale of profile designs"
+git commit -m "working on edit email api implementation"
 
 git push origin2 dev
